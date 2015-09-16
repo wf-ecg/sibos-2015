@@ -3,7 +3,7 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var W = window, /// change to Boot
 C = W.console;
-W.debug = Number(new Date('2014/09/29') > new Date());
+W.debug = Number(new Date('2015/09/29') > new Date());
 W.ROOT = ({
     mode: "eval('var x=0'),(typeof(x)!=='number'?'':'non-')+'strict'",
     base: 0,
@@ -23,13 +23,13 @@ W.ROOT = ({
         },
         '10.89.101.100': {
             nom: 'qla2',
-            sub: '/wf-ecg/1198227-sibos',
+            sub: '/wf-ecg/sibos-2015',
         },
         'localhost:8000': {
             nom: 'localhost',
-            sub: '/wf-ecg/sibos/1198227-sibos/app',
+            sub: '/wf-ecg/sibos-2015/app',
         },
-        'localhost:8227': {
+        'localhost:8943': {
             nom: 'localhost',
         },
     },
