@@ -1,0 +1,38 @@
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* DESKTOP / Blocks */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+#Desktop .content table {
+    td {
+        vertical-align: top;
+        &.blocks > p, &.blocks > ul {
+            font-size: 95%;
+            line-height: 140%;
+        }
+        &.chevron {
+            background-color: $whitey;
+            padding: 5px 9px;
+        }
+        &.blocks {
+            background-color: $whitey;
+            padding: 8px;
+        }
+        &.blocks p {
+            max-width: 95%;
+        }
+    }
+    .blocks {
+        background-color: white;
+
+        h3 {
+            margin: -8px -8px 12px;
+        }
+        a.learn {
+            @include font-plain();
+
+            float: right;
+            font-size: 9px;
+            margin: 5px 9px;
+        }
+    }
+}
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

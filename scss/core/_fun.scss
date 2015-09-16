@@ -1,0 +1,14 @@
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* functions */
+
+@function gM($num: 1){
+    @return $rem * $num;
+}
+
+// GENERIC FONT HELPER
+
+$fontServ1: '../../../lib/fonts/';
+$fontServ2: 'http://10.89.101.100/lib/fonts/';
+$fontServ3: 'http://www.wellsfargomedia.com/lib/fonts/';
+
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //

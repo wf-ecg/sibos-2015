@@ -1,0 +1,77 @@
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* MOBILE / Layout (header/footer Shares) */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+#Mobile {
+    background-color: white;
+    height: $dpH;
+    position: relative;
+    width: $dpW;
+    z-index: -1;
+
+    > article {
+        overflow: auto;
+    }
+
+    header {
+        box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        overflow: hidden;
+        z-index: 9;
+
+        .logobar {
+            @include bargrad();
+            @include nosel();
+            background-color: $bar1;
+            box-shadow: 0 0 3px black;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            z-index: 1;
+
+            img {
+                padding: 4px;
+                width: 120px;
+            }
+        }
+        h1 {
+            @include lightGrad();
+            color: black;
+            display: block;
+            font-size: 17px;
+            font-weight: 700;
+            height: 38px;
+            line-height: 130%;
+            padding: 9px 6px 3px;
+        }
+    }
+    footer {
+        @include lightGrad();
+        bottom: 0;
+        box-shadow: 0 -1px 3px rgba(0,0,0,0.3);
+        font-size: 9px;
+        height: 42px;
+        overflow: hidden;
+        padding: $minim;
+        position: absolute;
+        width: 100%;
+        z-index: 9;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    #Share {
+        height: 80px;
+        margin-top: -80px;
+        position: relative;
+        width: 100%;
+
+        > span {
+            background-color: white;
+            display: table-cell;
+            text-align: center;
+            vertical-align: bottom;
+        }
+    }
+}
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

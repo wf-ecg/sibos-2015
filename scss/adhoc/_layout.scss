@@ -1,0 +1,63 @@
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* ADHOC / Layout */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+#Mobile {
+    display: none;
+}
+#Desktop {
+    background-color: #fff;
+    border: 1px solid $light;
+    box-shadow: 0 0 33px rgba(0,0,0,0.1);
+    margin: 6px auto;
+    position: relative;
+    width: 956px;
+}
+#Desktop .content {
+    margin-left: 28px;
+    overflow: visible;
+    position: relative;
+    width: 898px;
+}
+#Share {
+    float: right;
+
+    .cap {
+        margin-right: 6px;
+        vertical-align: top;
+    }
+}
+body {
+    html.desktop & {
+        overflow-y: scroll;
+    }
+    html.mobile & {
+        font-size: 12.5px;
+    }
+    h3.chev {
+        font-weight: 600;
+        margin: 18px -8px 12px;
+        padding: 0;
+        line-height: 22px;
+
+        .msie & {
+            font-weight: 500;
+        }
+        span {
+            background-image: url(../images/misc/ribron.png);
+            background-repeat: no-repeat;
+            background-position: 100% 50%;
+            color: $prime2;
+            display: inline-block;
+            line-height: 22px;
+            margin: 0;
+            padding: 4px 20px 1px 10px;
+            text-transform: uppercase;
+            text-shadow: 0 0 1px white;
+            white-space: nowrap;
+        }
+    }
+    li {
+        list-style-image: url(../images/misc/bullet.gif);
+    }
+}
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

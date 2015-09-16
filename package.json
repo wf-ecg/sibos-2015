@@ -1,0 +1,27 @@
+{
+    "name": "1198227-sibos",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/wf-ecg/1198227-sibos.git"
+    },
+    "version": "0.1.0",
+    "devDependencies": {
+        "glob": "~3.2.8",
+        "grunt": "~0.4.1",
+        "grunt-contrib-concat": "~0.5.0",
+        "grunt-contrib-connect": "~0.5.0",
+        "grunt-contrib-jshint": "~0.7.2",
+        "grunt-contrib-sass": "~0.8.1",
+        "grunt-contrib-uglify": "~0.3.2",
+        "grunt-contrib-watch": "~0.6.1"
+    },
+    "dependencies": {
+        "grunt-sync": "^0.1.1",
+        "load-grunt-tasks": "~0.2.0"
+    },
+    "bases": ["app", ".", "../../.."],
+    "group": "docs/wf-ecg/1198227-sibos/0",
+    "port0": 7227,
+    "port1": 8227,
+    "zzzzz": 0
+}

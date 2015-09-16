@@ -1,0 +1,69 @@
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* DESKTOP / Content */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+#Desktop .content {
+    .shrink {
+        font-size: 90%;
+        line-height: 130%;
+        max-width: 90%;
+    }
+    .push, .navb a {
+        text-shadow: 0px .5px 1px #111;
+    }
+    .pull, .blocks {
+        text-shadow: 0px .5px 1px $lightest;
+    }
+    .pushbutton {
+        border: 0;
+        margin: 0;
+
+        &:hover {
+            border: 1px solid #ffc;
+            margin: -1px;
+        }
+    }
+    .external {
+        margin-top: 2px;
+        margin-left: -2px;
+        margin-right: -2px;
+        margin-bottom: -2px;
+    }
+    .target {
+        background-color: $hilite;
+    }
+    :target {
+        @include transition( all 0.5s ease-out 0 );
+    }
+    // GIVING
+
+    .givingLogo img {
+        margin: 12px 22px;
+    }
+    .headshot, .landshot {
+        float: left;
+        width: 128px; height: 96px;
+        margin-bottom: 5px;
+        margin-right: 10px;
+    }
+    .headshot {
+        width: 96px; height: 128px;
+        margin-bottom: 5px;
+        margin-right: 10px;
+    }
+    .npLogo {
+        float: right;
+        margin-left: 10px;
+    }
+    .banner {
+        display: none;
+        height: 255px;
+        position: relative;
+        width: 898px;
+
+        img.fade {
+            left: 0;
+            top: 0;
+        }
+    }
+}
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

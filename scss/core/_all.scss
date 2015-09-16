@@ -1,0 +1,24 @@
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* CORE */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+@import "_def";
+@import "_fun";
+@import "_mix";
+@import "_set";
+
+/* xtn */
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+
+%ani {
+    /* foo foo foo */
+    @include backface-visibility( hidden );
+    @include perspective( 1000 );
+    @include transform( scale(1) translate3d(0,0,0) rotate(0deg) );
+    @include transform-style( preserve-3d );
+    @include transition( all 0.125s ease-out 0 );
+}
+%bulge {
+    @include transform( translate(0px, 1px) scale(1.1)  );
+}
+
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //

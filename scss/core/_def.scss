@@ -1,0 +1,59 @@
+/* def */
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+// PALETTES
+$wf_red:        #bb0826;    $wf_yellow:     #fcc60a;   $wf_gray:      #8f8f8f;
+// Active Warm red and dark red are to create red gradients, not for text.
+$a_ebony:       #7a6855;    $a_d_ebony:     #574537;   $a_black:      #000000;
+$a_l_coolgray:  #d9d9d6;    $a_d_coolgray:  #44464a;   $a_m_coolgray: #bfc0be;
+$a_green:       #46a033;    $a_d_green:     #007337;
+$a_magenta:     #ae2573;    $a_d_magenta:   #821861;
+$a_orange:      #ed8800;    $a_d_orange:    #ce4c00;
+$a_plum:        #702f8a;    $a_d_plum:      #4d3b65;
+$a_warmred:     #ec1c29;    $a_d_red:       #ae1e23;
+$a_teal:        #0095c8;    $a_d_teal:      #00698c;
+// Earth
+$e_d_warmgray:  #675b53;    $e_m_warmgray:  #8c8279;
+$e_amber:       #a9431e;    $e_d_amber:     #803b2b;
+$e_aqua:        #0085ad;    $e_d_aqua:      #00617f;
+$e_blue:        #5e8ab4;    $e_d_blue:      #326295;
+$e_brown:       #b06224;    $e_d_brown:     #734626;
+$e_eggplant:    #893b67;    $e_d_eggplant:  #6c2b46;
+$e_purple:      #6f5091;    $e_d_purple:  $a_d_plum;
+$e_spruce:      #507f70;    $e_d_spruce:    #285c4d;
+// Neutral
+$n_l_gray:      #e0e3e2;    $n_d_gray:$a_d_coolgray;
+$n_air:         #f2e2bd;
+$n_aquablue:    #c2deea;
+$n_breeze:      #dadbbf;
+$n_khaki:       #bfcec2;
+$n_stone:       #d7d3c7;
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+//color
+$light: #cccccc;    $lighter: #dddddd;  $lightest: #eeeeee;
+$blue0: #336699;    $blue1: #779fdf;    $blue2: #6b83b2;
+$gray1: #999999;    $gray2: #777777;
+$gold0: $wf_yellow;
+$red:   $wf_red;    $red0: #9e172d;     $red1:  #c21737;    $red2: #8c081d;
+$whitey:#f5f5f4;
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+//color
+$bar1:     #D4002F; $bar2: #83001C;
+$navback1: #9f958d; $navback2: #837970;
+$navfore1: #62564b; $navfore2: #4c443d;
+$prime1:   $red0;   $prime2: $gold0;
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+//shade
+
+$shad0:  rgba(  0,   0,   0, 0.333);
+$shad1:  rgba(123, 123, 123, 0.123);
+$shad2:  rgba( 23,  23,  23, 0.234);
+$hilite: rgba(255, 255,  99, 0.300);
+$dilite: rgba(255,  99, 255, 0.300);
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+// misc
+
+$rem: 1rem; $hem: 0.5rem; $qem: 0.25rem;
+$link: $blue0;
+$remx: 12px;
+$minim: 5px;
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //

@@ -1,0 +1,44 @@
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* MOBILE / Btn */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+#Mobile {
+    button {
+        color: #fff;
+        vertical-align: baseline;
+
+        &.hover, &:hover {
+            opacity: 0.9;
+        }
+        span {
+            font-weight: normal;
+        }
+    }
+    .base {
+        @include grayGrad();
+
+        border-radius: 0.275rem;
+        font-size: 0.8rem;
+        padding: 2px 4px;
+        text-decoration: none;
+
+        a {
+            color: white;
+        }
+    }
+    .blue {
+        @extend .base;
+        @include blueGrad();
+
+        border-color: $blue1;
+    }
+    .home {
+        @extend .button;
+        width: 55px;
+    }
+    .share {
+        @extend .button;
+        float: right;
+        width: 55px;
+    }
+}
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

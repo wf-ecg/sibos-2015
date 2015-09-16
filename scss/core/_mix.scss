@@ -1,0 +1,103 @@
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* mixins */
+
+@mixin clearfix(){
+    &:after {
+        clear: both;
+        content: "";
+        display: table;
+        /* clearfix */
+    }
+}
+@mixin nosel(){
+    @include user-select(none);
+    -webkit-user-drag: none;
+    //cursor: move;
+}
+@mixin gimme(){
+    @include user-select(initial);
+    -webkit-user-drag: initial;
+    cursor: move;
+}
+@mixin rex($prop, $rem){
+    #{$prop}: $rem * $remx;
+    //#{$prop}: $rem * 1rem;
+}
+@mixin pos($x:0, $y:0){
+    @include rex('left', $x);
+    @include rex('top', $y);
+}
+@mixin siz($w:0, $h:0){
+    @include rex('width', $w);
+    @include rex('height', $h);
+}
+@mixin outline($color: $hilite, $width: 4){
+    outline: {
+        color: $color;
+        width: $width * 1px;
+    }
+}
+@mixin vgrad($clr1: white, $clr2: black, $per1: 1%, $per2: 77% ){
+    @include background-image( linear-gradient(top, $clr1 $per1, $clr2 $per2) );
+}
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+// GRADS
+@mixin bargrad(){
+    background-color: $bar2;
+    @include background-image( linear-gradient(top, $bar1 0%, $bar2 100%) );
+}
+@mixin navBack(){
+    background-color: $navback1;
+    @include vgrad( $navback1, $bar2);
+}
+@mixin navFore(){
+    background-color: $navfore1;
+    @include vgrad( $navfore1, $navfore2);
+}
+@mixin bodyGrad(){
+    background-color: $lighter;
+    @include vgrad( $light, $lighter, 6%, 66%);
+    @include background-image( linear-gradient(left, $light 0%, $lightest 25%, $lightest 75%, $light 100%) );
+}
+@mixin lightGrad(){
+    background-color: $light;
+    @include background-image( linear-gradient(top, $lightest 0%, $light 100%) );
+}
+@mixin blueGrad(){
+    background-color: $blue2;
+    @include background-image( linear-gradient(top, $blue1 0%, $blue2 100%) );
+}
+@mixin grayGrad(){
+    background-color: $gray2;
+    @include background-image( linear-gradient(top, $gray1 0%, $gray2 100%) );
+}
+@mixin redGrad(){
+    background-color: $red2;
+    @include background-image( linear-gradient(top, $red1 0%, $red2 100%) );
+}
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+// SHADS
+@mixin textShadow() {
+    text-shadow: 1px 1px 1px $shad0;
+}
+@mixin thinShadow() {
+    text-shadow: 0px 1px 1px black;
+}
+@mixin whiteShadow() {
+    text-shadow: 0 1px 2px $lightest;
+}
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+// FACES
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+@mixin font-archer() {
+    //font-family: 'Archer A', 'Archer B', Georgia, serif;
+    font-family: 'Archer SSm A', 'Archer SSm B', Georgia, serif;
+}
+@mixin font-plain() {
+    font-family: Helvetica, Arial, Geneva, sans-serif;
+}
+@mixin font-thick() {
+    font-family: Verdana, sans-serif;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //

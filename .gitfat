@@ -1,0 +1,2 @@
+[rsync]
+remote = localhost:/.repo/media/sibos

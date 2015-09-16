@@ -1,0 +1,79 @@
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* DESKTOP / Layout */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+#Desktop {
+    & > header {
+        margin-bottom: 1px;
+        padding: 28px;
+        padding-bottom: 0;
+
+        .mast {
+            height: 80px;
+            h1 {
+                float: left;
+            }
+            .logo {
+                margin-right: 1em;
+                vertical-align: bottom;
+            }
+            .stage {
+                float: right;
+            }
+        }
+        nav { /* baseline */
+            @include navFore();
+            @include font-thick();
+
+            color: gray;
+            font-size: 12px;
+            margin-top: 13px;
+            overflow: hidden;
+
+            a {
+                -webkit-font-smoothing: subpixel-antialiased;
+                color: $lightest;
+                border-right: 1px solid $light;
+                display: block;
+                float: left;
+                line-height: 1.4;
+                margin: 0;
+                opacity: 0.7;
+                padding: 5px 12px;
+                text-decoration: none;
+            }
+            a:hover {
+                @include navBack();
+                border-left: 1px solid white;
+                border-right: 1px solid white;
+                opacity: 0.7;
+                margin-left: -1px;
+            }
+            a.active {
+                @include navBack();
+                color: $gold0;
+                opacity: 1;
+
+                .msie & {
+                    background-color: #ae1e23;
+                }
+            }
+        }
+    }
+    & > footer {
+        clear: both;
+        color: #857b72;
+        border-top: 1px solid #e7e5e3;
+        height: 22px;
+        margin: 8px 28px;
+        position: relative;
+        vertical-align: baseline;
+        width: 898px;
+
+        p {
+            font-size: 10px;
+            line-height: 28px;
+            margin: 0;
+        }
+    }
+}
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

@@ -1,0 +1,51 @@
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* MOBILE / Nav */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+#Mobile {
+    .nav {
+        height: 100%;
+        width: 100%;
+    }
+    nav {
+        @include whiteShadow;
+        @include font-thick();
+        font-size: 140%;
+        font-weight: 300;
+        line-height: 1;
+
+        a {
+            @include lightGrad();
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            color: $red0;
+            display: inline-block;
+            margin: 3px 1px;
+            padding: 0.25em 0.5em;
+            position: relative;
+            text-decoration: none;
+            width: 100%;
+
+            &.active {
+                color: white;
+            }
+            &.hover, &:hover {
+                @include grayGrad();
+                @include thinShadow;
+                color: white;
+            }
+
+            // CHEVRON
+            &:after {
+                content: ' › ';
+                font-family: Arial;
+                font-size: 200%;
+                font-weight: 900;
+                line-height: 0.2em;
+                position: absolute;
+                right: $hem;
+                top: 0.5rem;
+            }
+        }
+    }
+}
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
