@@ -1,8 +1,8 @@
 {
-    "name": "1198227-sibos",
+    "name": "sibos-2015",
     "repository": {
         "type": "git",
-        "url": "https://github.com/wf-ecg/1198227-sibos.git"
+        "url": "https://github.com/wf-ecg/sibos-2015.git"
     },
     "version": "0.1.0",
     "devDependencies": {
@@ -20,8 +20,8 @@
         "load-grunt-tasks": "~0.2.0"
     },
     "bases": ["app", ".", "../../.."],
-    "group": "docs/wf-ecg/1198227-sibos/0",
-    "port0": 7227,
-    "port1": 8227,
+    "group": "docs/wf-ecg/sibos-2015/0",
+    "port0": 7943,
+    "port1": 8943,
     "zzzzz": 0
 }

@@ -31,7 +31,7 @@ var Main = (function ($, G, U) { // IIFE
             about:      ["About Wells Fargo",   'Learn about the #WellsFargo Global Financial Institutions business'],
             booth:      ["Visit Our Booth",     'See pics of the #WellsFargo booth & learn about events being hosted'],
             events:     ["Sibos Events",        'Learn more about the #WellsFargo events at #Sibos'],
-            explore:    ["Explore Boston",      'See what Boston has to offer at #Sibos 2014'],
+            explore:    ["Explore Singapore",      'See what Singapore has to offer at #Sibos 2015'],
             giving:     ["Charitable Giving",   'Learn more about the #WellsFargo charity programs at #Sibos'],
             home:       ["Home",                'Check out the #WellsFargo Global Financial Institutions Sibos microsite'],
             mini:       ["Sibos",               'Check out the #WellsFargo Global Financial Institutions Sibos microsite'],
@@ -43,7 +43,7 @@ var Main = (function ($, G, U) { // IIFE
             ShareStrings = {
                 url: 'http://wellsfargomedia.com/sibos/', /// show home only
                 img: 'http://wellsfargomedia.com/sibos/images/header/wf.png',
-                tab: 'Wells Fargo at Sibos 2014 – ' + cfArr[0],
+                tab: 'Wells Fargo at Sibos 2015 – ' + cfArr[0],
                 sum: cfArr[1],
             };
             $('#head1, #head3').attr('content', ShareStrings.tab);
