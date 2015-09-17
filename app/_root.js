@@ -3,7 +3,7 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var W = window, /// change to Boot
 C = W.console;
-W.debug = Number(new Date('2015/09/29') > new Date());
+W.debug = Number(new Date('2015/08/29') > new Date());
 W.ROOT = ({
     mode: "eval('var x=0'),(typeof(x)!=='number'?'':'non-')+'strict'",
     base: 0,

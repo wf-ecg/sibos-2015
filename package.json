@@ -20,7 +20,7 @@
         "grunt-sync": "^0.1.1",
         "load-grunt-tasks": "~0.2.0"
     },
-    "bases": ["app", ".", "../../.."],
+    "bases": ["app", ".", "../.."],
     "group": "docs/wf-ecg/sibos-2015/0",
     "port0": 7943,
     "port1": 8943,

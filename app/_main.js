@@ -119,7 +119,7 @@ var Main = (function ($, G, U) { // IIFE
         Df.inits();
 
         dfInit();
-        Scroll.init();
+        //Scroll.init();
         Extract.init();
 
         if (_whatPage() === 'mini.html') {
