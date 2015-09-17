@@ -43,9 +43,7 @@ body {
             font-weight: 500;
         }
         span {
-            background-image: url(../images/misc/ribron.png);
-            background-repeat: no-repeat;
-            background-position: 100% 50%;
+            background-color: $red0;
             color: $prime2;
             display: inline-block;
             line-height: 22px;
