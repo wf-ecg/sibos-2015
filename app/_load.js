@@ -96,8 +96,8 @@ var Data, Load, Tests, ShareStrings, switchTo5x = true;
         nope: [
             'http://www.wellsfargomedia.com/lib/js/ga-ecg.js',
             /*'http://www.wellsfargomedia.com/lib/video-js/videojs.ga.js',*/
-            G.ven + 'sharethis.lib.js',
-            G.ven + 'sharethis.cfg.js',
+//            G.ven + 'sharethis.lib.js',
+//            G.ven + 'sharethis.cfg.js',
         ],
     };
     M.load([G.Load.base, G.Load.font, G.Load.main, G.Load.test]);
