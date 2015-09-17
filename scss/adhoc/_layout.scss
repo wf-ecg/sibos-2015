@@ -52,6 +52,15 @@ body {
             text-transform: uppercase;
             text-shadow: 0 0 1px white;
             white-space: nowrap;
+            width: 100%;
+        }
+    }
+    .blocks.mini {
+        img {
+            margin: 0.5em;
+        }
+        hr {
+            clear: both;
         }
     }
     li {
