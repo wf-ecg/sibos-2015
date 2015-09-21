@@ -87,14 +87,13 @@
     text-shadow: 0 1px 2px $lightest;
 }
 // - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
-// FACES
-// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+// FONTS
 @mixin font-archer() {
     //font-family: 'Archer A', 'Archer B', Georgia, serif;
-    font-family: 'Archer SSm A', 'Archer SSm B', Georgia, serif;
+    font-family: 'Archer SSm A', 'Archer SSm B', Archer, Georgia, serif;
 }
 @mixin font-plain() {
-    font-family: Helvetica, Arial, Geneva, sans-serif;
+    font-family: 'myriad-pro', Helvetica, Arial, Geneva, sans-serif; // 'PT Sans'
 }
 @mixin font-thick() {
     font-family: Verdana, sans-serif;
