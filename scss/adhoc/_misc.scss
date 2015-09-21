@@ -38,5 +38,17 @@
         font-family: "archer-bold";
     }
 }
+.speakers {
+    margin-top: -1em;
+    &, br {
+        clear: both;
+    }
+    img, p {
+        display: inline-block;
+        line-height: 1.2;
+        max-width: 80% !important;
+        vertical-align: middle;
+    }
+}
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
