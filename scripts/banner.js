@@ -1,8 +1,7 @@
 /*jslint white:false */
-/*globals _, C, W, Glob, Util, jQuery,
-        */
+/*global _, C, W, Glob, Util, jQuery */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Banner = (function ($, G, U) { // IIFE
+var Banner = (function ($, G) { // IIFE
     'use strict';
     var name = 'Banner',
         self = new G.constructor(name, '(fade and loop)'),
@@ -12,8 +11,8 @@ var Banner = (function ($, G, U) { // IIFE
         inits: function (cb) {
             this.all = $('.fade');
             this.total = this.all.length;
-            this.now = 2;
-            this.time = 666;
+            this.now = Df.total - 1;
+            this.time = 1666;
             this.all.css({
                 position: 'absolute',
             });
@@ -21,18 +20,12 @@ var Banner = (function ($, G, U) { // IIFE
     };
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-    // HELPERS (defaults dependancy only)
+    // EXTEND
 
-    function binder(obj) {
-        $.each(obj, function (i, e) {
-            var anc;
-
-            if (e !== '#') {
-                anc = $('<a>').attr('href', e);
-                $('.' + i).wrap(anc);
-            }
-        });
-    }
+    $.fn.getFactor = function () {
+        var num = 1 * $(this).data('fade');
+        return num;
+    };
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     // INTERNALS
@@ -44,38 +37,33 @@ var Banner = (function ($, G, U) { // IIFE
             Df.now = Df.total - 1;
             Df.all.fadeIn(0);
         }
-        if (U.debug(2)) {
-            C.debug(Df.now);
-        }
     }
 
     function _runfade() {
-        descend();
+        var next = Df.all.eq(Df.now);
+        var time = (Df.time / next.getFactor());
 
-        Df.all.eq(Df.now) //
-        .fadeOut(Df.time, function () {
+        C.log('do next in', time, Df.now);
+
+        next.fadeOut(Df.time, function () {
+
             W.setTimeout(function () {
+                descend();
                 _runfade(); // recurses
-            }, Df.time * 3);
+            }, time);
         });
     }
 
-    function _binding() {
-        $('.banner').fadeOut(1).fadeIn(999);
-    }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-    function _init(obj) {
+    function _init() {
         if (self.isInited(true)) {
             return null;
         }
         Df.inits();
         _runfade();
 
-        if (obj) {
-            binder(obj);
-        }
-        _binding();
+        $('.banner').fadeOut(1).fadeIn(999);
     }
 
     $.extend(self, {
@@ -86,7 +74,7 @@ var Banner = (function ($, G, U) { // IIFE
     });
 
     return self;
-}(jQuery, Glob, Util));
+}(jQuery, Glob));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 

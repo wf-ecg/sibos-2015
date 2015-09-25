@@ -49,29 +49,6 @@ var Data, Load, Tests, ShareStrings, switchTo5x = true;
         },
     };
 
-    G.Load.font = {
-        test: (ROOT.conf.nom === 'localhost' || ROOT.conf.nom === 'qla2'),
-        yep: [
-            G.lib + (!W.isIE ? 'fonts/archer.ssm.css'     : 'fonts/eot/archer.ssm.css'),
-            G.lib + (!W.isIE ? 'fonts/myriad.con.css'     : 'fonts/eot/myriad.con.css'),
-            G.lib + (!W.isIE ? 'fonts/myriad.css'         : 'fonts/eot/myriad.css'),
-        ],
-        nope: [/*
-            '//cloud.typography.com/6819872/620964/css/fonts.css', // Normal */
-            '//cloud.typography.com/6819872/633184/css/fonts.css', // ScrnSmrt
-            //'//use.typekit.net/cqz6fet.js',
-        ],
-        complete: function () {
-            try {
-                if (!G.Load.font.test) {
-                    //Typekit.load();
-                }
-            } catch (e) {
-                C.error('typekit');
-            }
-        },
-    };
-
     G.Load.main = {
         both: [
             G.dir + 'build/main.js',
@@ -100,7 +77,7 @@ var Data, Load, Tests, ShareStrings, switchTo5x = true;
             G.ven + 'sharethis.cfg.js',
         ],
     };
-    M.load([G.Load.base, G.Load.font, G.Load.main, G.Load.test]);
+    M.load([G.Load.base, G.Load.main, G.Load.test]);
 
 }(jQuery, Modernizr, Glob));
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

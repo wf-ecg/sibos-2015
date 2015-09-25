@@ -15,6 +15,11 @@
         <script>location.href.match(/.*(\/[^\.\/]+)+$/) && (location.href += '/')</script>
         <script src="./_root.js"></script>
         <link href="./build/screen.css" media="all" rel="stylesheet" type="text/css">
+        <!--[if lt IE 9]><style>
+        @import url('/mfal/lib/fonts/eot/archer.ssm.css');
+        @import url('/mfal/lib/fonts/eot/myriad.css');
+        @import url('/mfal/lib/fonts/eot/myriad.con.css');
+        </style><![endif]-->
         <script defer src="./_load.js"></script>
         <!--  -->
     </head>
@@ -48,7 +53,8 @@
                             </p></td>
                         <td>&nbsp;</td>
                         <td>
-                            <!--<a href="#" data-title="booth_2" class="popup pic"><img class="fix" src="./images/booth/booth_1_tn.jpg" alt="Booth"></a>-->
+                            <a href="#" data-title="booth_1" class="popup pic"><img class="fix" src="./images/booth/booth_1_tn.jpg" alt="Booth"></a>
+                            <p style="text-align: center; font-size: x-small; margin-top: 0;">(click image to enlarge)</p>
                         </td>
                     </tr>
                     <tr>
@@ -78,6 +84,10 @@
                 </div>
                 <p>© 2015 Wells&nbsp;Fargo Bank, N.A. All rights reserved. ECG-1266943</p>
             </footer>
+        </div>
+        <div class="popup">
+            CLICK OUTSIDE IMAGE TO CLOSE<br>
+            <br><img id="booth_1" src="./images/booth/booth_1.jpg" tabindex="-1"><br>....
         </div>
         <div id="Mobile"></div>
 

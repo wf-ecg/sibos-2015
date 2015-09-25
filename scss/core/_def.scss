@@ -1,5 +1,15 @@
-/* def */
 // - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* CORE / define */
+@import url('/mfal/lib/fonts/archer.ssm.css');
+@import url('/mfal/lib/fonts/myriad.css');
+@import url('/mfal/lib/fonts/myriad.con.css');
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+// ANI
+$default-transform: translate3d(0,0,0);
+$default-transition-delay   : false;
+$default-transition-duration: 0.5s;
+$default-transition-property: all;
+$default-transition-function: ease-in;
 // PALETTES
 $wf_red:        #bb0826;    $wf_yellow:     #fcc60a;   $wf_gray:      #8f8f8f;
 // Active Warm red and dark red are to create red gradients, not for text.
