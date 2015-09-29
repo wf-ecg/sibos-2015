@@ -43,7 +43,7 @@ var Banner = (function ($, G) { // IIFE
         var next = Df.all.eq(Df.now);
         var time = (Df.time / next.getFactor());
 
-        C.log('do next in', time, Df.now);
+        //C.log('do next in', time, Df.now);
 
         next.fadeOut(Df.time, function () {
 
