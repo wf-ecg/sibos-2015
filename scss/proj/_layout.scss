@@ -67,4 +67,158 @@ body {
         list-style-image: url(../images/misc/bullet.gif);
     }
 }
+/*
+DESKTOP / Layout
+*/
+#Desktop {
+    & > header {
+        margin-bottom: 1px;
+        padding: 28px;
+        padding-bottom: 0;
+
+        .mast {
+            height: 80px;
+            h1 {
+                float: left;
+            }
+            .logo {
+                margin-right: 1em;
+                vertical-align: bottom;
+            }
+            .stage {
+                float: right;
+            }
+        }
+        nav { /* baseline */
+            @include navFore();
+            @include font-thick();
+
+            color: gray;
+            font-size: 12px;
+            margin-top: 13px;
+            overflow: hidden;
+
+            a {
+                -webkit-font-smoothing: subpixel-antialiased;
+                color: $lightest;
+                border-right: 1px solid $light;
+                display: block;
+                float: left;
+                line-height: 1.4;
+                margin: 0;
+                opacity: 0.7;
+                padding: 5px 12px;
+                text-decoration: none;
+            }
+            a:hover {
+                @include navBack();
+                border-left: 1px solid white;
+                border-right: 1px solid white;
+                opacity: 0.7;
+                margin-left: -1px;
+            }
+            a.active {
+                @include navBack();
+                color: $prime2;
+                opacity: 1;
+
+                .msie & {
+                    background-color: #ae1e23;
+                }
+            }
+        }
+    }
+    & > footer {
+        clear: both;
+        color: #857b72;
+        border-top: 1px solid #e7e5e3;
+        height: 22px;
+        margin: 8px 28px;
+        position: relative;
+        vertical-align: baseline;
+        width: 898px;
+
+        p {
+            font-size: 0.75em;
+            line-height: 28px;
+            margin: 0;
+        }
+    }
+}
+/*
+MOBILE / Layout (header/footer Shares)
+*/
+#Mobile {
+    background-color: white;
+    height: $dpH;
+    position: relative;
+    width: $dpW;
+    z-index: -1;
+
+    > article {
+        overflow: auto;
+    }
+
+    header {
+        box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        overflow: hidden;
+        z-index: 9;
+
+        .logobar {
+            @include bargrad();
+            @include nosel();
+            background-color: $bar1;
+            box-shadow: 0 0 3px black;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            z-index: 1;
+
+            img {
+                padding: 4px;
+                width: 120px;
+            }
+        }
+        h1 {
+            @include lightGrad();
+            color: black;
+            display: block;
+            font-size: 17px;
+            font-weight: 700;
+            height: 38px;
+            line-height: 130%;
+            padding: 9px 6px 3px;
+        }
+    }
+    footer {
+        @include lightGrad();
+        bottom: 0;
+        box-shadow: 0 -1px 3px rgba(0,0,0,0.3);
+        font-size: 9px;
+        height: 42px;
+        overflow: hidden;
+        padding: $minim;
+        position: absolute;
+        width: 100%;
+        z-index: 9;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    #Share {
+        height: 80px;
+        margin-top: -80px;
+        position: relative;
+        width: 100%;
+
+        > span {
+            background-color: white;
+            display: table-cell;
+            text-align: center;
+            vertical-align: bottom;
+        }
+    }
+}
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

@@ -1,15 +1,13 @@
 /*jslint white:false */
-/*globals _, C, W, Glob, Util, jQuery,
-        Banner, Extract, Main:true, Mobile, Popup, Scroll,
-    ShareStrings:true, jsMobi, jsView, */
+/*global _, C, W, Glob, jQuery, Banner, Extract, Main:true, Mobile, Popup, Scroll, ShareStrings:true, jsMobi, jsView */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Main = (function ($, G, U) { // IIFE
+var Main = (function ($, G) { // IIFE
     'use strict';
     var name = 'Main',
         self = new G.constructor(name, '(kicker and binder)'),
-        Df;
+        Df, cfArr;
 
-    Df = { // DEFAULTS
+    Df = {// DEFAULTS
         inits: function () {
             if (jsView.device.width < 800) {
                 jsMobi.insist('ask');
@@ -24,19 +22,19 @@ var Main = (function ($, G, U) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function dfInit() {
-        var raw, pageHash, cfArr;
+        var raw, pageHash;
 
         raw = W.location.pathname.split('/').pop().match(/\w+/g);
         pageHash = {
-            about:      ["About Wells Fargo",   'Learn about the #WellsFargo Global Financial Institutions business'],
-            booth:      ["Visit Our Booth",     'See pics of the #WellsFargo booth & learn about events being hosted'],
-            events:     ["Sibos Events",        'Learn more about the #WellsFargo events at #Sibos'],
-            explore:    ["Explore Singapore",      'See what Singapore has to offer at #Sibos 2015'],
-            giving:     ["Charitable Giving",   'Learn more about the #WellsFargo charity programs at #Sibos'],
-            home:       ["Home",                'Check out the #WellsFargo Global Financial Institutions Sibos microsite'],
-            mini:       ["Sibos",               'Check out the #WellsFargo Global Financial Institutions Sibos microsite'],
-            speakers:   ["Sibos Speakers",      'Learn about the #WellsFargo Global Financial Institutions publications'],
-            test:       ["x", 'x'],
+            about: ["About Wells Fargo", 'Learn about the #WellsFargo Global Financial Institutions business'],
+            booth: ["Visit Our Booth", 'See pics of the #WellsFargo booth & learn about events being hosted'],
+            events: ["Sibos Events", 'Learn more about the #WellsFargo events at #Sibos'],
+            explore: ["Explore Singapore", 'See what Singapore has to offer at #Sibos 2015'],
+            giving: ["Charitable Giving", 'Learn more about the #WellsFargo charity programs at #Sibos'],
+            home: ["Home", 'Check out the #WellsFargo Global Financial Institutions Sibos microsite'],
+            mini: ["Sibos", 'Check out the #WellsFargo Global Financial Institutions Sibos microsite'],
+            speakers: ["Sibos Speakers", 'Learn about the #WellsFargo Global Financial Institutions publications'],
+            test: ["x", 'x'],
         };
         try {
             cfArr = pageHash[raw[0]] || pageHash.mini;
@@ -96,11 +94,28 @@ var Main = (function ($, G, U) { // IIFE
 
         loop = function () {
             all.eq(next).fadeOut(fade).end() //
-            .eq(next = (next + 1) % ln).fadeIn(fade);
+                .eq(next = (next + 1) % ln).fadeIn(fade);
             // repeat every 5 seconds
             W.setTimeout(loop, time);
         };
         loop();
+    }
+
+    function fixExternal() {
+        $('a.external').append('<img class="external">');
+
+        $('.external').attr({
+            title: 'Opens external site',
+        });
+        $('a.external, .external a').attr({
+            target: 'external',
+        });
+        $('img.external, .external img').attr({
+            alt: 'external site',
+        });
+        $('img.external').attr({
+            src: './images/misc/link_icon.gif',
+        });
     }
 
     function _binder() {
@@ -119,6 +134,7 @@ var Main = (function ($, G, U) { // IIFE
         Df.inits();
 
         dfInit();
+        fixExternal();
         //Scroll.init();
         Extract.init();
 
@@ -153,7 +169,7 @@ var Main = (function ($, G, U) { // IIFE
     });
 
     return self;
-}(jQuery, Glob, Util));
+}(jQuery, Glob));
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
