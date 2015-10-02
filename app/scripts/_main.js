@@ -171,6 +171,7 @@ var Main = (function ($, G) { // IIFE
     return self;
 }(jQuery, Glob));
 
+Main.init();
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /*

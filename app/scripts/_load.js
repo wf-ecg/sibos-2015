@@ -1,5 +1,5 @@
 /*jslint white:false */
-/*global _, C, W, Glob, jQuery, Main, Modernizr, Popup, Typekit, ROOT */
+/*global _, C, W, Glob, jQuery,  Modernizr, Typekit */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Data, Load, Tests, ShareStrings, switchTo5x = true, ROOT = {
     doc: "/home.html",
@@ -47,52 +47,22 @@ var Data, Load, Tests, ShareStrings, switchTo5x = true, ROOT = {
     if (ROOT.conf.nom === 'localhost') {
         W.debug++;
     }
+    if (W.isIE) {
+        require(['ven/msie/split', 'ven/msie/respond.min']);
+    }
 
-    G.Load.base = {
-        test: W.isIE,
-        yep: [
-            G.ven + 'msie/split.js',
-            G.ven + 'msie/respond.min.js',
-        ],
-        both: [
-            /*G.lib + 'video-js/ecg/video-js.css',
-             G.lib + 'video-js/ecg/video.js',*/
-            G.dir + 'build/libs.min.js',
-        ],
-        complete: function () {
-            Data = new G.constructor('Data', '(catchall data fixture)');
-        },
-    };
+    Data = new G.constructor('Data', '(catchall data fixture)');
 
-    G.Load.main = {
-        both: [
-            G.dir + 'build/main.js',
-            G.dir + '_main.js',
-        ],
-        complete: function () {
-            _.delay(function () {
-                if (W.isIE) {
-                    M.load(G.ven + 'msie/selectivizr-min.js');
-                }
-            }, 1e3);
-            Main.init();
-            ROOT.loaded($);
-        },
-    };
+    _.delay(function () {
+        if (W.isIE) {
+            require(['ven/msie/selectivizr-min']);
+        }
+        if (W.debug < 1) {
+            require(['ven/sharethis.lib', 'ven/sharethis.cfg', 'http://www.wellsfargomedia.com/lib/js/ga-ecg']);
+        }
+    }, 1e3);
 
-    G.Load.test = {
-        test: W.debug > 0,
-        yep: [
-            /* G.dir + '_test.js', */
-        ],
-        nope: [
-            'http://www.wellsfargomedia.com/lib/js/ga-ecg.js',
-            /*'http://www.wellsfargomedia.com/lib/video-js/videojs.ga.js',*/
-            G.ven + 'sharethis.lib.js',
-            G.ven + 'sharethis.cfg.js',
-        ],
-    };
-    M.load([G.Load.base, G.Load.main, G.Load.test]);
+    ROOT.loaded($);
 
 }(jQuery, Modernizr, Glob));
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

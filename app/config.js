@@ -51,7 +51,7 @@ require(['ven/slice', 'modern', 'lodash', 'console', 'ven/es5-shim'], function (
 
     require(['jquery', 'glob', 'util', 'jsmobi'], function () {
         require(['xjquery', 'glob.fetch', 'jsview'], function () {
-            require(['_load', '_main']);
+            require(['_load', 'banner', 'extract', 'metas', 'mobile', 'popup', 'scroll', '_main']);
         });
     });
 });
