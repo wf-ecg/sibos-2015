@@ -1,6 +1,6 @@
 /*jslint white:false */
 /*globals _, C, W, Glob, jQuery,
-        Main, Modernizr, Popup, Typekit, ROOT */
+ Main, Modernizr, Popup, Typekit, ROOT */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Data, Load, Tests, ShareStrings, switchTo5x = true;
 
@@ -9,7 +9,7 @@ var Data, Load, Tests, ShareStrings, switchTo5x = true;
     G.Load = {};
     W.Tests = $.Callbacks();
 
-    _.defaults(G, { /// all stubs terminated
+    _.defaults(G, {/// all stubs terminated
         dir: ROOT.dir + '/',
         lib: ROOT.lib + '/',
         ven: ROOT.dir + '/vendor/',
@@ -41,7 +41,7 @@ var Data, Load, Tests, ShareStrings, switchTo5x = true;
         ],
         both: [
             /*G.lib + 'video-js/ecg/video-js.css',
-            G.lib + 'video-js/ecg/video.js',*/
+             G.lib + 'video-js/ecg/video.js',*/
             G.dir + 'build/libs.min.js',
         ],
         complete: function () {

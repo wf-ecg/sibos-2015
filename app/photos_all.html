@@ -15,7 +15,10 @@
         <script>location.href.match(/.*(\/[^\.\/]+)+$/)&&(location.href+='/')</script>
         <script src="./_root.js"></script>
         <link href="./build/screen.css" media="all" rel="stylesheet" type="text/css">
-        <script defer src="./_load.js"></script>
+        <script src="/lib/requirejs/2.1.17/require.js"
+                data-main="./config"
+                data-main="./build/app"
+        ></script>
         <!--  -->
         <script src="./vendor/galleria/galleria-1.2.9.js"></script>
         <script>
