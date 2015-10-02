@@ -29,10 +29,10 @@ var jsMobi = (function (W) { // IIFE
             gentle: (how === 'ask'),
             roving: !W.location.href.match(mini),
             smallish: !!self.any(),
-        }
+        };
         confirm = function () {
             var msg = ['You seem to be using a handheld device.',
-            'Do you want the mobile site?'];
+                'Do you want the mobile site?'];
             return W.confirm(msg.join('\n'));
         };
 
@@ -48,28 +48,28 @@ var jsMobi = (function (W) { // IIFE
     self = {
         autoPick: _pick,
         insist: _insist,
-        android: function() {
+        android: function () {
             return N.userAgent.match(/Android/i);
         },
-        blackberry: function() {
+        blackberry: function () {
             return N.userAgent.match(/BlackBerry|\(BB|PlayBook/i);
         },
-        ios: function() {
+        ios: function () {
             return N.userAgent.match(/iPhone|iPad|iPod/i);
         },
-        opera: function() {
+        opera: function () {
             return N.userAgent.match(/Opera Mini/i);
         },
-        windows: function() {
+        windows: function () {
             return N.userAgent.match(/IEMobile/i);
         },
-        generic: function() {
+        generic: function () {
             return N.userAgent.match(/Mobile|BrowserNG/i);
         },
-        any: function() {
+        any: function () {
             return (self.android() || self.blackberry() || self.ios() || self.opera() || self.windows() || self.generic() || false);
         },
-        not: function() {
+        not: function () {
             return !self.any();
         },
         scan: function () {
@@ -98,8 +98,8 @@ var jsMobi = (function (W) { // IIFE
 
 /*
 
-Change the onclick handler to a ontouch handler for mobile devices to get rid of the 300ms delay.
-    var hasTouch = 'ontouchstart' in document.documentElement;
-    var ismobi = navigator.userAgent.match(/Mobi/i);
+ Change the onclick handler to a ontouch handler for mobile devices to get rid of the 300ms delay.
+ var hasTouch = 'ontouchstart' in document.documentElement;
+ var ismobi = navigator.userAgent.match(/Mobi/i);
 
  */

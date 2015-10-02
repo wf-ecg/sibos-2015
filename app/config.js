@@ -9,17 +9,26 @@ W.debug = 0;
 require.config({
     baseUrl: 'scripts',
     paths: {
-        lr: 'http://localhost:7156/livereload.js?snipver=1',
+        lr: 'http://localhost:7943/livereload.js?snipver=1',
         lib: 'libs',
         ven: '../vendor',
+
         jquery: '/lib/jquery/1.8.2/jquery',
         lodash: '/lib/underscore/js-1.4.4/lodash.underscore',
         modern: '/lib/modernizr/2.6.2/modernizr.min',
-        videojs: '/lib/video-js/ecg/video',
+        console: 'libs/console',
+
+        glob: 'libs/glob',
+        util: 'libs/util',
+
+        jsmobi: 'libs/js-mobi',
+        jsview: 'libs/js-view',
+
+        xjquery: 'libs/jq-xtn',
     }
 });
 
-require(['modern', 'lib/console'], function () {
+require(['ven/slice', 'modern', 'lodash', 'console', 'ven/es5-shim'], function () {
     try {
         W.SHIET.init();
 
@@ -39,8 +48,12 @@ require(['modern', 'lib/console'], function () {
     } catch (err) {
         C.error('config', err);
     }
-});
 
-require(['main']);
+    require(['jquery', 'glob', 'util', 'jsmobi'], function () {
+        require(['xjquery', 'glob.fetch', 'jsview'], function () {
+            require(['_main']);
+        });
+    });
+});
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

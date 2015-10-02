@@ -1,5 +1,5 @@
 /*jslint white:false */
-/*globals W, C, Glob:true */
+/*global W, C, Glob:true, Infinity */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 function Glob(name, desc) {
@@ -25,11 +25,13 @@ function Glob(name, desc) {
 
     self.isInited = function (b) {
         if (inited) {
-            if (b) C.error('double init', name);
+            if (b)
+                C.error('double init', name);
             return true;
         } else {
             if (b) { // first run, so just say no
-                W.debug > 0 && C.debug('inited', name);
+                if (W.debug > 0)
+                    C.debug('inited', name);
                 inited = true;
             } else { // affirmations only!
                 throw new Error(name + ' not inited');
@@ -37,7 +39,8 @@ function Glob(name, desc) {
             return false;
         }
     };
-    W.debug > 0 && C.log('create',  self, desc);
+    if (W.debug > 0)
+        C.log('create', self, desc);
 }
 
 Glob.addCounter = function (obj, nom) { // love this
