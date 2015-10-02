@@ -102,6 +102,8 @@ var Main = (function ($, G) { // IIFE
     }
 
     function fixExternal() {
+        $('a.external').append('<img class="external">');
+
         $('.external').attr({
             title: 'Opens external site',
         });
