@@ -12,7 +12,7 @@ var Banner = (function ($, G) { // IIFE
             this.all = $('.fade');
             this.total = this.all.length;
             this.now = Df.total - 1;
-            this.time = 1666;
+            this.time = 666;
             this.all.css({
                 position: 'absolute',
             });
@@ -41,11 +41,11 @@ var Banner = (function ($, G) { // IIFE
 
     function _runfade() {
         var next = Df.all.eq(Df.now);
-        var time = (Df.time / next.getFactor());
+        var time = (Df.time * next.getFactor());
 
         //C.log('do next in', time, Df.now);
 
-        next.fadeOut(Df.time, function () {
+        next.fadeOut(time, function () {
 
             W.setTimeout(function () {
                 descend();
