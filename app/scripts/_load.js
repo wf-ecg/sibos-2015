@@ -1,7 +1,23 @@
 /*jslint white:false */
 /*global _, C, W, Glob, jQuery, Main, Modernizr, Popup, Typekit, ROOT */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Data, Load, Tests, ShareStrings, switchTo5x = true;
+var Data, Load, Tests, ShareStrings, switchTo5x = true, ROOT = {
+    doc: "/home.html",
+    lib: "/lib",
+    conf: {
+        nom: 'localhost'
+    },
+    loaded: function () {
+        $('body').removeClass('loading');
+        if (W.debug > 0) {
+            $('html').addClass('debug');
+        }
+        if (C && C.groupCollapsed) {
+            C.groupEnd();
+        }
+        delete this.loaded;
+    },
+};
 
 (function ($, M, G) {
     'use strict';
