@@ -1,6 +1,5 @@
 /*jslint white:false */
-/*globals _, C, W, Glob, Util, jQuery,
-        Extract, Main, Mobile:true, jsMobi, jsView, */
+/*global _, C, W, Glob, Util, jQuery, Extract, Main, Mobile:true, jsMobi, jsView, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Mobile = (function ($, G, U) { // IIFE
     'use strict';
@@ -8,7 +7,7 @@ var Mobile = (function ($, G, U) { // IIFE
         self = new G.constructor(name, '(mobile nav and page swapper)'),
         Df;
 
-    Df = { // DEFAULTS
+    Df = {// DEFAULTS
         atnav: true,
         bezel: '<div class="bezel"></div>',
         busy: false,
@@ -208,18 +207,18 @@ var Mobile = (function ($, G, U) { // IIFE
 
 /*
 
-find nav
-    suppress default
-    detect target page
-    check db
-        is older than
-            ajax fetch
-        else
-            use it
-    slide out nav
-    slide in body
-        article group?
-        take composition cues from ajax page
-        a div in there suggest what to knit
+ find nav
+ suppress default
+ detect target page
+ check db
+ is older than
+ ajax fetch
+ else
+ use it
+ slide out nav
+ slide in body
+ article group?
+ take composition cues from ajax page
+ a div in there suggest what to knit
 
  */

@@ -1,6 +1,5 @@
 /*jslint white:false */
-/*globals _, C, W, Glob, Util, jQuery,
-        Fetch:true, */
+/*global _, C, W, Glob, Util, jQuery, Fetch:true, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 // DATA-TYPE
 Glob.Fetch = (function ($, G, U) { // IIFE

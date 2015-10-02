@@ -1,6 +1,5 @@
 /*jslint white:false */
-/*globals _, C, W, Glob, Util, jQuery,
-        Main, Mobile, */
+/*global _, C, W, Glob, Util, jQuery, Main, Mobile, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Extract = (function ($, G, U) { // IIFE
     'use strict';
@@ -8,10 +7,9 @@ var Extract = (function ($, G, U) { // IIFE
         self = new G.constructor(name, '(page parser and storage)'),
         Df;
 
-    Df = { // DEFAULTS
+    Df = {// DEFAULTS
         recent: null,
         holder: '<article>',
-
         home: 'h1 img.home',
         mobileEle: '#Mobile',
         headerEle: 'header',
@@ -19,7 +17,6 @@ var Extract = (function ($, G, U) { // IIFE
         headurl: '__head.html',
         point: 'section.port',
         container: '.content',
-
         extracts: {},
         sources: {},
         inits: function () {
@@ -103,8 +100,8 @@ var Extract = (function ($, G, U) { // IIFE
                 append(page);
                 miniScrub(Df.extracts[url]);
                 Df.home.clone() //
-                .prependTo(jq).add('header') //
-                .click(Mobile.home);
+                    .prependTo(jq).add('header') //
+                    .click(Mobile.home);
             });
         }
         naving.resolve(jq);

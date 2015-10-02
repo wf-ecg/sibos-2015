@@ -2,14 +2,14 @@
 /*globals window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var W = window, /// change to Boot
-C = W.console;
+    C = W.console;
 W.debug = Number(new Date('2015/08/29') > new Date());
 W.ROOT = ({
     mode: "eval('var x=0'),(typeof(x)!=='number'?'':'non-')+'strict'",
     base: 0,
     // adjust built-in page depth? (e.g. '-1' == '..')
     conf: {
-        _: { /// any top level host
+        _: {/// any top level host
             nom: '*',
         },
         'www.wellsfargomedia.com': {
@@ -109,6 +109,6 @@ W.ROOT = ({
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /*
-Originally built by WF-ECG INTERACTIVE (Wells Fargo Enterprise Creative Group).
-        We design and develop with a focus on web standards and best practices.
-*/
+ Originally built by WF-ECG INTERACTIVE (Wells Fargo Enterprise Creative Group).
+ We design and develop with a focus on web standards and best practices.
+ */

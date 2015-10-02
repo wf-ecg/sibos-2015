@@ -52,7 +52,7 @@ var jsView = (function (W, $) { // IIFE
         },
         _widths: function () {
             return {
-                s: [ 'width/' + S.width,
+                s: ['width/' + S.width,
                     'availW/' + S.availWidth] + String(),
                 w: ['innerW/' + W.innerWidth,
                     'outerW/' + W.outerWidth] + String(),
@@ -115,6 +115,6 @@ var jsView = (function (W, $) { // IIFE
 
 /*
 
-    TODO: integrate into other js-view efforts
+ TODO: integrate into other js-view efforts
 
  */

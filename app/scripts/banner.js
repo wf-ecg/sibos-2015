@@ -7,7 +7,7 @@ var Banner = (function ($, G) { // IIFE
         self = new G.constructor(name, '(fade and loop)'),
         Df;
 
-    Df = { // DEFAULTS
+    Df = {// DEFAULTS
         inits: function (cb) {
             this.all = $('.fade');
             this.total = this.all.length;

@@ -1,6 +1,5 @@
 /*jslint white:false */
-/*globals _, C, W, Glob, Util, jQuery,
-        */
+/*global _, C, W, Glob, Util, jQuery */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Scroll = (function ($, G, U) { // IIFE
     'use strict';
@@ -8,9 +7,10 @@ var Scroll = (function ($, G, U) { // IIFE
         self = new G.constructor(name, '(scroll and do it smooth)'),
         Df;
 
-    Df = { // DEFAULTS
+    Df = {// DEFAULTS
         box: $(W.isIE ? 'html' : 'body'),
-        inits: function (cb) {},
+        inits: function (cb) {
+        },
         fixed: null,
         funum: 320,
         mysel: '.tofix',

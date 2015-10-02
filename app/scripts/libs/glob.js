@@ -1,8 +1,8 @@
 /*jslint white:false */
-/*global W, C, Glob:true, Infinity */
+/*global W, C, Infinity */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-function Glob(name, desc) {
+function _Glob(name, desc) {
     var self = this,
         inited = false,
         parent = self.constructor || this;
@@ -43,7 +43,7 @@ function Glob(name, desc) {
         C.log('create', self, desc);
 }
 
-Glob.addCounter = function (obj, nom) { // love this
+_Glob.addCounter = function (obj, nom) { // love this
     var num = -1,
         mod = Infinity,
         inc;
@@ -67,11 +67,11 @@ Glob.addCounter = function (obj, nom) { // love this
     return inc;
 };
 
-Glob.prototype.addCounter = Glob.addCounter;
-Glob.prototype.valueOf = function () {
+_Glob.prototype.addCounter = _Glob.addCounter;
+_Glob.prototype.valueOf = function () {
     return this[''];
 };
 
-Glob.addCounter();
-Glob = new Glob();
+_Glob.addCounter();
+Glob = new _Glob();
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

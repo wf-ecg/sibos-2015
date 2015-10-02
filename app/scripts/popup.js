@@ -1,6 +1,5 @@
 /*jslint white:false */
-/*globals _, C, W, Glob, Util, jQuery,
-        Main, videojs, */
+/*global _, C, W, Glob, Util, jQuery, Main, jsView, videojs, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Popup = (function ($, G, U) { // IIFE
     'use strict';
@@ -8,7 +7,7 @@ var Popup = (function ($, G, U) { // IIFE
         self = new G.constructor(name, '(popup background and display media)'),
         Df;
 
-    Df = { // DEFAULTS
+    Df = {// DEFAULTS
     };
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -29,11 +28,11 @@ var Popup = (function ($, G, U) { // IIFE
         }
 
         div.appendTo('body') //
-        .data('pic', true) //
-        .bind('show.pic', function () {
-            div.addClass('big');
+            .data('pic', true) //
+            .bind('show.pic', function () {
+                div.addClass('big');
 
-        }).bind('hide.pic', function () {
+            }).bind('hide.pic', function () {
             div.removeClass('big');
 
         }).bind('mouseup', function (evt) {

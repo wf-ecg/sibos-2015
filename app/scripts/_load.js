@@ -1,6 +1,5 @@
 /*jslint white:false */
-/*globals _, C, W, Glob, jQuery,
- Main, Modernizr, Popup, Typekit, ROOT */
+/*global _, C, W, Glob, jQuery, Main, Modernizr, Popup, Typekit, ROOT */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var Data, Load, Tests, ShareStrings, switchTo5x = true;
 
