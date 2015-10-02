@@ -101,6 +101,21 @@ var Main = (function ($, G) { // IIFE
         loop();
     }
 
+    function fixExternal() {
+        $('.external').attr({
+            title: 'Opens external site',
+        });
+        $('a.external, .external a').attr({
+            target: 'external',
+        });
+        $('img.external, .external img').attr({
+            alt: 'external site',
+        });
+        $('img.external').attr({
+            src: './images/misc/link_icon.gif',
+        });
+    }
+
     function _binder() {
         _device();
         _activeNav();
@@ -117,6 +132,7 @@ var Main = (function ($, G) { // IIFE
         Df.inits();
 
         dfInit();
+        fixExternal();
         //Scroll.init();
         Extract.init();
 
