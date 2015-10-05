@@ -1,13 +1,23 @@
 /*jslint white:false */
-/*global _, Glob */
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*global _ */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ recreated drt 2015-10
+
+ USE
+ mobile nav and page swapper
+
+ TODO
+ document a bit
+ modernize
+
+ */
 define(['jquery', 'util', 'jsmobi', 'jsview'], function
     ($, U, jsMobi, jsView) { // IIFE
     'use strict';
 
     var W = (W && W.window || window), C = (W.C || W.console || {});
     var name = 'Mobile',
-        self = new Glob.constructor(name, '(mobile nav and page swapper)'),
+        self = {},
         Df;
     var Main, Extract;
 
@@ -25,6 +35,8 @@ define(['jquery', 'util', 'jsmobi', 'jsview'], function
         time: 333,
         wide: 999,
         inits: function () {
+            self.isInited = true;
+
             Df.bezel = $(Df.bezel);
             Df.page = $(Df.page);
             Df.mobile = $(Df.mobile).show();
@@ -180,12 +192,12 @@ define(['jquery', 'util', 'jsmobi', 'jsview'], function
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _init(m, e) {
+        if (self.isInited) {
+            return null;
+        }
         Main = m;
         Extract = e;
 
-        if (self.isInited(true)) {
-            return null;
-        }
         Df.inits();
         _embezelr();
         _binding();

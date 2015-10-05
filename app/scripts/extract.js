@@ -1,13 +1,23 @@
 /*jslint white:false */
-/*global _, Glob */
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*global _ */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ recreated drt 2015-10
+
+ USE
+ page parser and storage
+
+ TODO
+ document a bit
+ modernize
+
+ */
 define(['jquery', 'fetch', 'mobile'], function
     ($, Fetch, Mobile) {
     'use strict';
 
     var W = (W && W.window || window), C = (W.C || W.console || {});
     var name = 'Extract',
-        self = new Glob.constructor(name, '(page parser and storage)'),
+        self = {},
         Df;
 
     Df = {// DEFAULTS
@@ -23,6 +33,8 @@ define(['jquery', 'fetch', 'mobile'], function
         extracts: {},
         sources: {},
         inits: function () {
+            self.isInited = true;
+
             this.mobileEle = $(this.mobileEle);
             this.headerEle = $(this.headerEle);
             // this.point  set later after mobile loads?
@@ -110,7 +122,7 @@ define(['jquery', 'fetch', 'mobile'], function
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _init() {
-        if (self.isInited(true)) {
+        if (self.isInited) {
             return null;
         }
         Df.inits();

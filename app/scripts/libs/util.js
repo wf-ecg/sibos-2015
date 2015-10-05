@@ -1,13 +1,22 @@
 /*jslint white:false */
-/*global _, Glob */
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*global _ */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ recreated drt 2015-10
 
+ USE
+ limited utils
+
+ TODO
+ document a bit
+ modernize
+
+ */
 define(['jquery'], function ($) { /// IIFE
     'use strict';
 
     var W = (W && W.window || window), C = (W.C || W.console || {});
     var name = 'Util',
-        self = new Glob.constructor(name, '(limited utils)'),
+        self = {},
         U;
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// CONSTANTS

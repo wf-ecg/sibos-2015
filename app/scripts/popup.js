@@ -1,15 +1,29 @@
 /*jslint white:false */
-/*global _, Glob, Main, videojs, */
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*global _, Main, videojs, */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ recreated drt 2015-10
+
+ USE
+ popup background and display media
+
+ TODO
+ document a bit
+ modernize
+
+ */
 define(['jquery', 'jsview'], function ($, jsView) { // IIFE
     'use strict';
 
     var W = (W && W.window || window), C = (W.C || W.console || {});
     var name = 'Popup',
-        self = new Glob.constructor(name, '(popup background and display media)'),
+        self = {},
         Df;
+    var Main;
 
     Df = {// DEFAULTS
+        inits: function () {
+            self.isInited = true;
+        },
     };
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -92,11 +106,13 @@ define(['jquery', 'jsview'], function ($, jsView) { // IIFE
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-    function _init(jq) {
-        if (self.isInited(true)) {
+    function _init(m) {
+        if (self.isInited) {
             return null;
         }
+        Main = m;
 
+        Df.inits();
         _binding();
     }
 

@@ -1,16 +1,28 @@
 /*jslint white:false */
-/*global _, Glob */
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*global _ */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ recreated drt 2015-10
+
+ USE
+ fade and loop
+
+ TODO
+ document a bit
+ modernize
+
+ */
 define(['jquery'], function ($) { // IIFE
     'use strict';
 
     var W = (W && W.window || window), C = (W.C || W.console || {});
     var name = 'Banner',
-        self = new Glob.constructor(name, '(fade and loop)'),
+        self = {},
         Df;
 
     Df = {// DEFAULTS
-        inits: function (cb) {
+        inits: function () {
+            self.isInited = true;
+
             this.all = $('.fade');
             this.total = this.all.length;
             this.now = Df.total - 1;
@@ -59,7 +71,7 @@ define(['jquery'], function ($) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _init() {
-        if (self.isInited(true)) {
+        if (self.isInited) {
             return null;
         }
         Df.inits();

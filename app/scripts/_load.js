@@ -1,13 +1,14 @@
 /*jslint white:false */
-/*global _, Glob, jQuery */
+/*global _ */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var ShareStrings,
-    switchTo5x = true;
 
-(function ($) {
+define(['jquery'], function ($) {
     'use strict';
 
     var W = (W && W.window || window), C = (W.C || W.console || {});
+
+    W.ShareStrings = {};
+    W.switchTo5x = true;
 
     var ROOT = {
         doc: "/home.html",
@@ -28,12 +29,6 @@ var ShareStrings,
             delete this.loaded;
         },
     };
-
-    _.defaults(Glob, {/// all stubs terminated
-        dir: ROOT.dir + '/',
-        lib: ROOT.lib + '/',
-        ven: ROOT.dir + '/vendor/',
-    });
 
     if ($.browser.msie) {
         $(function () {
@@ -66,6 +61,5 @@ var ShareStrings,
     }, 1e3);
 
     ROOT.loaded($);
-
-}(jQuery));
+});
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

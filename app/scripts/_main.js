@@ -1,17 +1,29 @@
 /*jslint white:false */
-/*global _, Glob, ShareStrings:true */
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*global _, ShareStrings:true */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ recreated drt 2015-10
+
+ USE
+ kicker and binder
+
+ TODO
+ document a bit
+ modernize
+
+ */
 define(['jquery', 'banner', 'extract', 'mobile', 'popup', 'jsmobi', 'jsview'], function
     ($, Banner, Extract, Mobile, Popup, jsMobi, jsView) { // IIFE
     'use strict';
 
     var W = (W && W.window || window), C = (W.C || W.console || {});
     var name = 'Main',
-        self = new Glob.constructor(name, '(kicker and binder)'),
+        self = {},
         Df, cfArr;
 
     Df = {// DEFAULTS
         inits: function () {
+            self.isInited = true;
+
             if (jsView.device.width < 800) {
                 jsMobi.insist('ask');
             } else {
@@ -149,7 +161,7 @@ define(['jquery', 'banner', 'extract', 'mobile', 'popup', 'jsmobi', 'jsview'], f
     /// INTERNAL
 
     function _init() {
-        if (self.isInited(true)) {
+        if (self.isInited) {
             return null;
         }
         Df.inits();
@@ -171,7 +183,7 @@ define(['jquery', 'banner', 'extract', 'mobile', 'popup', 'jsmobi', 'jsview'], f
             });
         }
 
-        Popup.init();
+        Popup.init(self);
     }
 
     $.extend(self, {

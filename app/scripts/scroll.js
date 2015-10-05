@@ -1,18 +1,29 @@
 /*jslint white:false */
-/*global _, Glob */
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*global _ */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ recreated drt 2015-10
+
+ USE
+ scroll and do it smooth
+
+ TODO
+ document a bit
+ modernize
+
+ */
 define(['jquery'], function ($, G) { // IIFE
     'use strict';
 
     var W = (W && W.window || window), C = (W.C || W.console || {});
     var name = 'Scroll',
-        self = new Glob.constructor(name, '(scroll and do it smooth)'),
+        self = {},
         Df;
 
     Df = {// DEFAULTS
-        box: $(W.isIE ? 'html' : 'body'),
-        inits: function (cb) {
+        inits: function () {
+            self.isInited = true;
         },
+        box: $(W.isIE ? 'html' : 'body'),
         fixed: null,
         funum: 320,
         mysel: '.tofix',
@@ -90,7 +101,7 @@ define(['jquery'], function ($, G) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _init() {
-        if (self.isInited(true)) {
+        if (self.isInited) {
             return null;
         }
 
