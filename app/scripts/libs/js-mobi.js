@@ -1,5 +1,10 @@
 /*jslint white:false */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+if (typeof define !== 'function') {
+    define = function () {
+        jsMobi = arguments[1]();
+    };
+}
 define([], function () { // IIFE
     'use strict';
 

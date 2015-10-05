@@ -1,30 +1,35 @@
 /*jslint white:false */
-/*global _, C, W, Glob, jQuery,  Modernizr, Typekit */
+/*global _, Glob, jQuery */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Data, Load, Tests, ShareStrings, switchTo5x = true, ROOT = {
-    doc: "/home.html",
-    lib: "/lib",
-    conf: {
-        nom: 'localhost'
-    },
-    loaded: function () {
-        $('body').removeClass('loading');
-        if (W.debug > 0) {
-            $('html').addClass('debug');
-        }
-        if (C && C.groupCollapsed) {
-            C.groupEnd();
-        }
-        delete this.loaded;
-    },
-};
+var ShareStrings,
+    switchTo5x = true;
 
-(function ($, M, G) {
+(function ($) {
     'use strict';
-    G.Load = {};
-    W.Tests = $.Callbacks();
 
-    _.defaults(G, {/// all stubs terminated
+    var W = (W && W.window || window), C = (W.C || W.console || {});
+
+    var ROOT = {
+        doc: "/home.html",
+        lib: "/lib",
+        conf: {
+            nom: 'localhost'
+        },
+        loaded: function () {
+            $('body').removeClass('loading');
+
+            if (W.debug > 0) {
+                $('html').addClass('debug');
+            }
+            if (C && C.groupCollapsed) {
+                C.groupEnd();
+            }
+
+            delete this.loaded;
+        },
+    };
+
+    _.defaults(Glob, {/// all stubs terminated
         dir: ROOT.dir + '/',
         lib: ROOT.lib + '/',
         ven: ROOT.dir + '/vendor/',
@@ -51,18 +56,16 @@ var Data, Load, Tests, ShareStrings, switchTo5x = true, ROOT = {
         require(['ven/msie/split', 'ven/msie/respond.min']);
     }
 
-    Data = new G.constructor('Data', '(catchall data fixture)');
-
     _.delay(function () {
         if (W.isIE) {
             require(['ven/msie/selectivizr-min']);
         }
-        if (W.debug < 1) {
-            require(['ven/sharethis.lib', 'ven/sharethis.cfg', 'http://www.wellsfargomedia.com/lib/js/ga-ecg']);
+        if (W.debug < 0) {
+            //require(['ven/sharethis.lib', 'ven/sharethis.cfg', 'http://www.wellsfargomedia.com/lib/js/ga-ecg']);
         }
     }, 1e3);
 
     ROOT.loaded($);
 
-}(jQuery, Modernizr, Glob));
+}(jQuery));
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
