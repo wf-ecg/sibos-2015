@@ -66,7 +66,7 @@ var Data, Load, Tests, ShareStrings, switchTo5x = true;
     };
 
     G.Load.test = {
-        test: W.debug >= 0,
+        test: W.debug > 0,
         yep: [
             /* G.dir + '_test.js', */
         ],
