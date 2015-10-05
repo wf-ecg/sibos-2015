@@ -1,11 +1,15 @@
 /*jslint white:false */
-/*global _, C, W, Glob, Util, jQuery, Extract, Main, Mobile:true, jsMobi, jsView, */
+/*global _, Glob */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Mobile = (function ($, G, U) { // IIFE
+define(['jquery', 'util', 'jsmobi', 'jsview'], function
+    ($, U, jsMobi, jsView) { // IIFE
     'use strict';
+
+    var W = (W && W.window || window), C = (W.C || W.console || {});
     var name = 'Mobile',
-        self = new G.constructor(name, '(mobile nav and page swapper)'),
+        self = new Glob.constructor(name, '(mobile nav and page swapper)'),
         Df;
+    var Main, Extract;
 
     Df = {// DEFAULTS
         atnav: true,
@@ -175,7 +179,10 @@ var Mobile = (function ($, G, U) { // IIFE
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-    function _init() {
+    function _init(m, e) {
+        Main = m;
+        Extract = e;
+
         if (self.isInited(true)) {
             return null;
         }
@@ -201,7 +208,7 @@ var Mobile = (function ($, G, U) { // IIFE
     });
 
     return self;
-}(jQuery, Glob, Util));
+});
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 

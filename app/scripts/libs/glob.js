@@ -1,11 +1,14 @@
 /*jslint white:false */
-/*global W, C, Infinity */
+/*global Infinity */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 function _Glob(name, desc) {
+    'use strict';
+
+    var W = (W && W.window || window), C = (W.C || W.console || {});
     var self = this,
         inited = false,
-        parent = self.constructor || this;
+        parent = self.constructor || self;
 
     parent.noms = parent.noms || [];
     parent.objs = parent.objs || {};

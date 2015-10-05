@@ -1,10 +1,12 @@
 /*jslint white:false */
-/*global _, C, W, Glob, Util, jQuery */
+/*global _, Glob */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Banner = (function ($, G) { // IIFE
+define(['jquery'], function ($) { // IIFE
     'use strict';
+
+    var W = (W && W.window || window), C = (W.C || W.console || {});
     var name = 'Banner',
-        self = new G.constructor(name, '(fade and loop)'),
+        self = new Glob.constructor(name, '(fade and loop)'),
         Df;
 
     Df = {// DEFAULTS
@@ -74,7 +76,7 @@ var Banner = (function ($, G) { // IIFE
     });
 
     return self;
-}(jQuery, Glob));
+});
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 

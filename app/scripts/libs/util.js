@@ -1,11 +1,13 @@
 /*jslint white:false */
-/*global _, C, W, Glob, jQuery, Util:true, */
+/*global _, Glob */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-var Util = (function ($, G) { /// IIFE
+define(['jquery'], function ($) { /// IIFE
     'use strict';
+
+    var W = (W && W.window || window), C = (W.C || W.console || {});
     var name = 'Util',
-        self = new G.constructor(name, '(limited utils)'),
+        self = new Glob.constructor(name, '(limited utils)'),
         U;
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// CONSTANTS
@@ -210,7 +212,7 @@ var Util = (function ($, G) { /// IIFE
     }, U);
 
     return self;
-}(jQuery, Glob));
+});
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /*

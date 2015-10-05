@@ -1,10 +1,10 @@
 /*jslint white:false */
-/*globals window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var jsMobi = (function (W) { // IIFE
+define([], function () { // IIFE
     'use strict';
-    var C = W.console,
-        N = W.navigator,
+
+    var W = (W && W.window || window), C = (W.C || W.console || {});
+    var N = W.navigator,
         name = 'jsMobi',
         main = 'home.html',
         mini = 'mini.html',
@@ -92,7 +92,7 @@ var jsMobi = (function (W) { // IIFE
     }
 
     return self;
-}(window));
+});
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 

@@ -18,17 +18,23 @@ require.config({
         modern: '/lib/modernizr/2.6.2/modernizr.min',
         console: 'libs/console',
 
-        glob: 'libs/glob',
         util: 'libs/util',
 
         jsmobi: 'libs/js-mobi',
         jsview: 'libs/js-view',
 
         xjquery: 'libs/jq-xtn',
-    }
+        fetch: 'libs/fetch',
+    },
+//    shim: {
+//        main: {
+//            deps: ['_main'],
+//            exports: 'Main',
+//        },
+//    }
 });
 
-require(['ven/slice', 'modern', 'lodash', 'console', 'ven/es5-shim'], function () {
+require(['ven/slice', 'modern', 'lodash', 'console', 'ven/es5-shim', 'lib/glob'], function () {
     try {
         W.SHIET.init();
 
@@ -49,9 +55,9 @@ require(['ven/slice', 'modern', 'lodash', 'console', 'ven/es5-shim'], function (
         C.error('config', err);
     }
 
-    require(['jquery', 'glob', 'util', 'jsmobi'], function () {
-        require(['xjquery', 'glob.fetch', 'jsview'], function () {
-            require(['_load', 'banner', 'extract', 'metas', 'mobile', 'popup', 'scroll', '_main']);
+    require(['_load', 'xjquery'], function () {
+        define(['_main'], function (Main) {
+            Main.init();
         });
     });
 });

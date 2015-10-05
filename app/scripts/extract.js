@@ -1,10 +1,13 @@
 /*jslint white:false */
-/*global _, C, W, Glob, Util, jQuery, Main, Mobile, */
+/*global _, Glob */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Extract = (function ($, G, U) { // IIFE
+define(['jquery', 'fetch', 'mobile'], function
+    ($, Fetch, Mobile) {
     'use strict';
+
+    var W = (W && W.window || window), C = (W.C || W.console || {});
     var name = 'Extract',
-        self = new G.constructor(name, '(page parser and storage)'),
+        self = new Glob.constructor(name, '(page parser and storage)'),
         Df;
 
     Df = {// DEFAULTS
@@ -24,9 +27,7 @@ var Extract = (function ($, G, U) { // IIFE
             this.headerEle = $(this.headerEle);
             // this.point  set later after mobile loads?
 
-            if (U.debug()) {
-                C.debug(name, 'Df.inits\n', Df);
-            }
+            C.debug(name, 'Df.inits\n', Df);
         },
     };
 
@@ -44,10 +45,9 @@ var Extract = (function ($, G, U) { // IIFE
     }
 
     function takeSource(url, cb) {
-        if (U.debug()) {
-            C.debug(name, 'takeSource', url);
-        }
-        Df.sources[url] = new G.Fetch(url, cb || callback);
+        C.debug(name, 'takeSource', url);
+
+        Df.sources[url] = new Fetch(url, cb || callback);
         return (Df.sources[url]);
     }
 
@@ -109,7 +109,7 @@ var Extract = (function ($, G, U) { // IIFE
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-    function _init(cb) {
+    function _init() {
         if (self.isInited(true)) {
             return null;
         }
@@ -133,7 +133,7 @@ var Extract = (function ($, G, U) { // IIFE
     });
 
     return self;
-}(jQuery, Glob, Util));
+});
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 

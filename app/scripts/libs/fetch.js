@@ -1,9 +1,10 @@
 /*jslint white:false */
-/*global _, C, W, Glob, Util, jQuery, Fetch:true, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 // DATA-TYPE
-Glob.Fetch = (function ($, G, U) { // IIFE
+define(['jquery'], function ($) { // IIFE
     'use strict';
+
+    var W = (W && W.window || window), C = (W.C || W.console || {});
     var name = 'Fetch',
         signature = '(url:string, cb:function)',
         expires = 100e3; // 100 seconds
@@ -63,22 +64,10 @@ Glob.Fetch = (function ($, G, U) { // IIFE
 
             page.time = $.now();
             page.jqxhr = $.get(page.url, function () { // responseText
-
-                if (U.debug(2)) {
-                    C.debug(name, ['_get', 'success', page.url]);
-                }
                 page.body = page._pick('body')[0];
-                // page.paras = page._pick('p');
-                // page.head = page._pick('head');
-
             }).fail(function () {
                 C.error(arguments);
-
             }).always(function () {
-
-                if (U.debug(2)) {
-                    C.debug(name, 'always', cb);
-                }
                 cb(page);
             });
         },
@@ -99,7 +88,7 @@ Glob.Fetch = (function ($, G, U) { // IIFE
     };
 
     return Fetch;
-}(jQuery, Glob, Util));
+});
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 

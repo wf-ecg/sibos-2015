@@ -1,10 +1,12 @@
 /*jslint white:false */
-/*global _, C, W, Glob, Util, jQuery, Main, jsView, videojs, */
+/*global _, Glob, Main, videojs, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Popup = (function ($, G, U) { // IIFE
+define(['jquery', 'jsview'], function ($, jsView) { // IIFE
     'use strict';
+
+    var W = (W && W.window || window), C = (W.C || W.console || {});
     var name = 'Popup',
-        self = new G.constructor(name, '(popup background and display media)'),
+        self = new Glob.constructor(name, '(popup background and display media)'),
         Df;
 
     Df = {// DEFAULTS
@@ -106,7 +108,7 @@ var Popup = (function ($, G, U) { // IIFE
     });
 
     return self;
-}(jQuery, Glob, Util));
+});
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 

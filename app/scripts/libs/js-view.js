@@ -1,10 +1,10 @@
 /*jslint white:false */
-/*globals window, jQuery */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var jsView = (function (W, $) { // IIFE
+define(['jquery'], function ($) { // IIFE
     'use strict';
-    var C = W.console,
-        D = W.document,
+
+    var W = (W && W.window || window), C = (W.C || W.console || {});
+    var D = W.document,
         E = D.documentElement,
         S = W.screen,
         name = 'jsView',
@@ -109,7 +109,7 @@ var jsView = (function (W, $) { // IIFE
     }
 
     return self;
-}(window, jQuery));
+});
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
