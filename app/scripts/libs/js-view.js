@@ -10,10 +10,6 @@ define(['jquery'], function ($) { // IIFE
         name = 'jsView',
         self = {};
 
-    function _debug(n) {
-        return W.debug >= (n || 0);
-    }
-
     self.device = {
         client: W.navigator.userAgent,
         ppp: W.devicePixelRatio,
@@ -103,10 +99,6 @@ define(['jquery'], function ($) { // IIFE
             return self.port.layoutWidth() / self.port.visualWidth();
         },
     };
-
-    if (_debug()) {
-        C.log([name], self.mobile.agent());
-    }
 
     return self;
 });

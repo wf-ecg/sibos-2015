@@ -165,7 +165,7 @@ define(['jquery', 'banner', 'extract', 'mobile', 'popup', 'jsmobi', 'jsview'], f
             C.groupEnd();
         }
 
-        if ($.browser.msie) {
+        if (W.isIE) {
             $(function () {
                 $('html').addClass('msie');
                 $('body').on('mouseover', '.region, .widget, a, li', function () {

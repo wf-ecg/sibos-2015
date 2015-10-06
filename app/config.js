@@ -13,7 +13,7 @@ require.config({
         lib: 'libs',
         ven: '../vendor',
 
-        jquery: '/lib/jquery/1.8.2/jquery',
+        jquery: '/lib/jquery/1.11.3/jquery',
         lodash: '/lib/underscore/js-1.4.4/lodash.underscore',
         modern: '/lib/modernizr/2.6.2/modernizr.min',
 

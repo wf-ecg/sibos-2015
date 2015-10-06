@@ -29,7 +29,7 @@ define('console', ['jquery'], function ($) {
             this.ltie9();
             if (!$.fn)
                 throw new Error('init requires jquery');
-            this.jqsays = $.browser.msie;
+            this.jqsays = $.browser && $.browser.msie;
             if (this.trident && !this.jqsays)
                 this.gtie11 = true;
             if (this.trident)

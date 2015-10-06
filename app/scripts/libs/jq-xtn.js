@@ -159,7 +159,7 @@ define(['jquery'], function ($) {
 
     $.scrollTo = function (ele, ms) {
         var $me = $(ele),
-            doc = $.browser.msie ? 'html' : 'body';
+            doc = W.isIE ? 'html' : 'body';
 
         if ($me.length) {
             $(doc).stop().animate({

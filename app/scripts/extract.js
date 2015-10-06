@@ -38,8 +38,6 @@ define(['jquery', 'fetch', 'mobile'], function
             this.mobileEle = $(this.mobileEle);
             this.headerEle = $(this.headerEle);
             // this.point  set later after mobile loads?
-
-            C.debug(name, 'Df.inits\n', Df);
         },
     };
 
@@ -53,12 +51,10 @@ define(['jquery', 'fetch', 'mobile'], function
     function append(page, sel) {
         // this will only parse the children of top elements [html/body/head]
         Df.recent = $(page.body).scout(sel || Df.container).children();
-        return Df.extracts[page.url].append(Df.recent);
+        Df.extracts[page.url].append(Df.recent);
     }
 
     function takeSource(url, cb) {
-        C.debug(name, 'takeSource', url);
-
         Df.sources[url] = new Fetch(url, cb || callback);
         return (Df.sources[url]);
     }

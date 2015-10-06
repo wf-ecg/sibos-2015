@@ -128,7 +128,7 @@ define(['jquery'], function ($) { /// IIFE
         var o = {},
             bs = $('body').scrollTop(),
             hs = $('html').scrollTop(),
-            ie = $.browser.msie,
+            ie = W.isIE,
             ff = $.browser.mozilla;
 
         if (ie) {

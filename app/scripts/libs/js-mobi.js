@@ -15,10 +15,6 @@ define([], function () { // IIFE
         mini = 'mini.html',
         self = {};
 
-    function _debug(n) {
-        return W.debug >= (n || 0);
-    }
-
     function _pick() {
         if (!self.any()) {
             W.location = main;
@@ -91,10 +87,6 @@ define([], function () { // IIFE
             W.alert(self.scan() || 'immobile');
         },
     };
-
-    if (_debug()) {
-        C.log([name], self.scan());
-    }
 
     return self;
 });
