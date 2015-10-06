@@ -11,8 +11,8 @@
  modernize
 
  */
-define(['jquery', 'util', 'jsmobi', 'jsview'], function
-    ($, U, jsMobi, jsView) { // IIFE
+define(['jquery', 'jsmobi', 'jsview'], function
+    ($, jsMobi, jsView) { // IIFE
     'use strict';
 
     var W = (W && W.window || window), C = (W.C || W.console || {});
@@ -55,9 +55,6 @@ define(['jquery', 'util', 'jsmobi', 'jsview'], function
                     self.sizer();
                     W.location.reload();
                 }, 333));
-            }
-            if (U.debug()) {
-                C.debug(name, 'Df.inits\n', Df);
             }
         }
     };
@@ -134,10 +131,6 @@ define(['jquery', 'util', 'jsmobi', 'jsview'], function
         }
         Df.current = jq;
 
-        if (U.debug()) {
-            C.debug(name, '_revealPage >', (yes ? jq.toString() : 'home'));
-        }
-
         if (yes) {
             jq.show();
             slide(Df.nav, 0, Df.wide * -1);
@@ -174,9 +167,6 @@ define(['jquery', 'util', 'jsmobi', 'jsview'], function
         }
 
         str = Main.page(str);
-        if (U.debug()) {
-            C.debug(name, '_slider', str);
-        }
         Extract.page(str, $.Deferred().done(self.drill));
     }
 
