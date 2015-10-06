@@ -1,11 +1,12 @@
 /*jslint white:false */
-/*globals W, C, Glob:true */
+/*global Infinity */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-function Glob(name, desc) {
+function _Glob(name, desc) {
+    var W = (W && W.window || window), C = (W.C || W.console || {});
     var self = this,
         inited = false,
-        parent = self.constructor || this;
+        parent = self.constructor || self;
 
     parent.noms = parent.noms || [];
     parent.objs = parent.objs || {};
@@ -25,11 +26,13 @@ function Glob(name, desc) {
 
     self.isInited = function (b) {
         if (inited) {
-            if (b) C.error('double init', name);
+            if (b)
+                C.error('double init', name);
             return true;
         } else {
             if (b) { // first run, so just say no
-                W.debug > 0 && C.debug('inited', name);
+                if (W.debug > 0)
+                    C.debug('inited', name);
                 inited = true;
             } else { // affirmations only!
                 throw new Error(name + ' not inited');
@@ -37,10 +40,11 @@ function Glob(name, desc) {
             return false;
         }
     };
-    W.debug > 0 && C.log('create',  self, desc);
+    if (W.debug > 0)
+        C.log('create', self, desc);
 }
 
-Glob.addCounter = function (obj, nom) { // love this
+_Glob.addCounter = function (obj, nom) { // love this
     var num = -1,
         mod = Infinity,
         inc;
@@ -64,11 +68,11 @@ Glob.addCounter = function (obj, nom) { // love this
     return inc;
 };
 
-Glob.prototype.addCounter = Glob.addCounter;
-Glob.prototype.valueOf = function () {
+_Glob.prototype.addCounter = _Glob.addCounter;
+_Glob.prototype.valueOf = function () {
     return this[''];
 };
 
-Glob.addCounter();
-Glob = new Glob();
+_Glob.addCounter();
+Glob = new _Glob();
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

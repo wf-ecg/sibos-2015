@@ -1,17 +1,28 @@
 /*jslint white:false */
-/*globals _, C, W, Glob, Util, jQuery,
-        Main, Mobile, */
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Extract = (function ($, G, U) { // IIFE
+/*global _ */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ recreated drt 2015-10
+
+ USE
+ page parser and storage
+
+ TODO
+ document a bit
+ modernize
+
+ */
+define(['jquery', 'fetch', 'mobile'], function
+    ($, Fetch, Mobile) {
     'use strict';
+
+    var W = (W && W.window || window), C = (W.C || W.console || {});
     var name = 'Extract',
-        self = new G.constructor(name, '(page parser and storage)'),
+        self = {},
         Df;
 
-    Df = { // DEFAULTS
+    Df = {// DEFAULTS
         recent: null,
         holder: '<article>',
-
         home: 'h1 img.home',
         mobileEle: '#Mobile',
         headerEle: 'header',
@@ -19,17 +30,14 @@ var Extract = (function ($, G, U) { // IIFE
         headurl: '__head.html',
         point: 'section.port',
         container: '.content',
-
         extracts: {},
         sources: {},
         inits: function () {
+            self.isInited = true;
+
             this.mobileEle = $(this.mobileEle);
             this.headerEle = $(this.headerEle);
             // this.point  set later after mobile loads?
-
-            if (U.debug()) {
-                C.debug(name, 'Df.inits\n', Df);
-            }
         },
     };
 
@@ -43,14 +51,11 @@ var Extract = (function ($, G, U) { // IIFE
     function append(page, sel) {
         // this will only parse the children of top elements [html/body/head]
         Df.recent = $(page.body).scout(sel || Df.container).children();
-        return Df.extracts[page.url].append(Df.recent);
+        Df.extracts[page.url].append(Df.recent);
     }
 
     function takeSource(url, cb) {
-        if (U.debug()) {
-            C.debug(name, 'takeSource', url);
-        }
-        Df.sources[url] = new G.Fetch(url, cb || callback);
+        Df.sources[url] = new Fetch(url, cb || callback);
         return (Df.sources[url]);
     }
 
@@ -103,8 +108,8 @@ var Extract = (function ($, G, U) { // IIFE
                 append(page);
                 miniScrub(Df.extracts[url]);
                 Df.home.clone() //
-                .prependTo(jq).add('header') //
-                .click(Mobile.home);
+                    .prependTo(jq).add('header') //
+                    .click(Mobile.home);
             });
         }
         naving.resolve(jq);
@@ -112,8 +117,8 @@ var Extract = (function ($, G, U) { // IIFE
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-    function _init(cb) {
-        if (self.isInited(true)) {
+    function _init() {
+        if (self.isInited) {
             return null;
         }
         Df.inits();
@@ -136,7 +141,7 @@ var Extract = (function ($, G, U) { // IIFE
     });
 
     return self;
-}(jQuery, Glob, Util));
+});
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 

@@ -1,14 +1,29 @@
 /*jslint white:false */
-/*global _, C, W, Glob, jQuery, Banner, Extract, Main:true, Mobile, Popup, Scroll, ShareStrings:true, jsMobi, jsView */
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Main = (function ($, G) { // IIFE
+/*global _, ShareStrings:true */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ recreated drt 2015-10
+
+ USE
+ kicker and binder
+
+ TODO
+ document a bit
+ modernize
+
+ */
+define(['jquery', 'banner', 'extract', 'mobile', 'popup', 'jsmobi', 'jsview'], function
+    ($, Banner, Extract, Mobile, Popup, jsMobi, jsView) { // IIFE
     'use strict';
+
+    var W = (W && W.window || window), C = (W.C || W.console || {});
     var name = 'Main',
-        self = new G.constructor(name, '(kicker and binder)'),
+        self = {},
         Df, cfArr;
 
     Df = {// DEFAULTS
         inits: function () {
+            self.isInited = true;
+
             if (jsView.device.width < 800) {
                 jsMobi.insist('ask');
             } else {
@@ -78,6 +93,23 @@ var Main = (function ($, G) { // IIFE
         $('a[href="./' + page + '"]').first().addClass('active');
     }
 
+    function _addMetas() {
+        var i, metas = [
+            '<meta id="head1" name="title"              content="">',
+            '<meta id="head2" name="description"        content="">',
+            '<meta id="head3" property="og:title"       content="">',
+            '<meta id="head4" property="og:description" content="">',
+            '<meta id="head5" property="og:url"         content="">',
+            '<meta id="head6" property="og:image"       content="http://www.wellsfargomedia.com/lib/images/wflogo.svg">',
+            '<meta id="head7" property="og:site_name"   content="www.wellsfargomedia.com">',
+            '<meta id="head8" property="og:type"        content="microsite">'
+        ];
+
+        for (i = 1; i < metas.length; i++) {
+            $(metas[i]).insertAfter('#head0');
+        }
+    }
+
     function startRotator(i, e) {
         var div = $(e);
         var all = div.find('a');
@@ -121,27 +153,47 @@ var Main = (function ($, G) { // IIFE
     function _binder() {
         _device();
         _activeNav();
+        _addMetas();
         $('p.rotator').each(startRotator);
+
+        $('body').removeClass('loading');
+
+        if (W.debug > 0) {
+            $('html').addClass('debug');
+        }
+        if (C && C.groupCollapsed) {
+            C.groupEnd();
+        }
+
+        if (W.isIE) {
+            $(function () {
+                $('html').addClass('msie');
+                $('body').on('mouseover', '.region, .widget, a, li', function () {
+                    $(this).addClass('hover');
+                }).on('mouseout', '.region, .widget, a, li', function () {
+                    $(this).removeClass('hover');
+                });
+            });
+        }
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
 
     function _init() {
-        if (self.isInited(true)) {
+        if (self.isInited) {
             return null;
         }
         Df.inits();
 
         dfInit();
         fixExternal();
-        //Scroll.init();
         Extract.init();
 
         if (_whatPage() === 'mini.html') {
             Extract.nav($.Deferred()).done(function () {
                 Banner.init();
-                Mobile.init();
+                Mobile.init(self, Extract);
                 _binder();
             });
         } else {
@@ -151,7 +203,7 @@ var Main = (function ($, G) { // IIFE
             });
         }
 
-        Popup.init();
+        Popup.init(self);
     }
 
     $.extend(self, {
@@ -169,8 +221,7 @@ var Main = (function ($, G) { // IIFE
     });
 
     return self;
-}(jQuery, Glob));
-
+});
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /*

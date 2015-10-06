@@ -1,6 +1,7 @@
 <meta charset="utf-8">
 <meta content="ie=edge" http-equiv="x-ua-compatible">
-<script>location.href.match(/\.com.*(\/[^\.\/]+)+$/)&&(location.href+='/')</script>
-<script src="./build/boot.min.js"></script>
+<script>(function(l,i,s,t){s=l.pathname;t=s.toLowerCase().replace(/index/,i||'index');t=t.match
+    (/\w+\.\w+$/)?t:t.replace(/\/*$/,'/index.html');if(t!==s)l.pathname=t;}(location));</script>
+<script src="./scripts/libs/js-mobi.js"></script>
 <script>jsMobi.autoPick();</script>
 <noscript> error: scripting is disabled </noscript>

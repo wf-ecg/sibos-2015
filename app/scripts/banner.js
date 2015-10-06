@@ -1,14 +1,28 @@
 /*jslint white:false */
-/*global _, C, W, Glob, Util, jQuery */
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Banner = (function ($, G) { // IIFE
+/*global _ */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ recreated drt 2015-10
+
+ USE
+ fade and loop
+
+ TODO
+ document a bit
+ modernize
+
+ */
+define(['jquery'], function ($) { // IIFE
     'use strict';
+
+    var W = (W && W.window || window), C = (W.C || W.console || {});
     var name = 'Banner',
-        self = new G.constructor(name, '(fade and loop)'),
+        self = {},
         Df;
 
-    Df = { // DEFAULTS
-        inits: function (cb) {
+    Df = {// DEFAULTS
+        inits: function () {
+            self.isInited = true;
+
             this.all = $('.fade');
             this.total = this.all.length;
             this.now = Df.total - 1;
@@ -57,7 +71,7 @@ var Banner = (function ($, G) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
     function _init() {
-        if (self.isInited(true)) {
+        if (self.isInited) {
             return null;
         }
         Df.inits();
@@ -74,7 +88,7 @@ var Banner = (function ($, G) { // IIFE
     });
 
     return self;
-}(jQuery, Glob));
+});
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
