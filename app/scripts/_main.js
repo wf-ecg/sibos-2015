@@ -155,6 +155,26 @@ define(['jquery', 'banner', 'extract', 'mobile', 'popup', 'jsmobi', 'jsview'], f
         _activeNav();
         _addMetas();
         $('p.rotator').each(startRotator);
+
+        $('body').removeClass('loading');
+
+        if (W.debug > 0) {
+            $('html').addClass('debug');
+        }
+        if (C && C.groupCollapsed) {
+            C.groupEnd();
+        }
+
+        if ($.browser.msie) {
+            $(function () {
+                $('html').addClass('msie');
+                $('body').on('mouseover', '.region, .widget, a, li', function () {
+                    $(this).addClass('hover');
+                }).on('mouseout', '.region, .widget, a, li', function () {
+                    $(this).removeClass('hover');
+                });
+            });
+        }
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

@@ -16,15 +16,15 @@ require.config({
         jquery: '/lib/jquery/1.8.2/jquery',
         lodash: '/lib/underscore/js-1.4.4/lodash.underscore',
         modern: '/lib/modernizr/2.6.2/modernizr.min',
-        console: 'libs/console',
 
+        console: 'libs/console',
         util: 'libs/util',
+        glob: 'libs/glob',
+        fetch: 'libs/fetch',
 
         jsmobi: 'libs/js-mobi',
         jsview: 'libs/js-view',
-
-        xjquery: 'libs/jq-xtn',
-        fetch: 'libs/fetch',
+        jqxtn: 'libs/jq-xtn',
     },
 //    shim: {
 //        main: {
@@ -34,7 +34,7 @@ require.config({
 //    }
 });
 
-require(['ven/slice', 'modern', 'lodash', 'console', 'ven/es5-shim', 'lib/glob'], function () {
+require(['ven/slice', 'ven/es5-shim', 'modern', 'lodash', 'console'], function () {
     try {
         W.SHIET.init();
 
@@ -47,17 +47,35 @@ require(['ven/slice', 'modern', 'lodash', 'console', 'ven/es5-shim', 'lib/glob']
             }
             W.debug++;
         }
-        if (W.debug > 0) { // any debug should attempt livereload
+        if (W.debug > -1) { // any debug should attempt livereload
             require(['lr']);
-            C.log('LiveReloading');
+            C.warn('LiveReloading');
         }
     } catch (err) {
         C.error('config', err);
     }
 
-    require(['_load', 'xjquery'], function () {
-        define(['_main'], function (Main) {
+    /// CUSTOM
+
+    if (W.isIE) {
+        require(['ven/msie/split', 'ven/msie/respond.min']);
+    }
+
+    require(['jqxtn', 'glob'], function () {
+        W.ShareStrings = {};
+        W.switchTo5x = true;
+
+        require(['_main'], function (Main) {
             Main.init();
+
+            _.delay(function () {
+                if (W.isIE) {
+                    require(['ven/msie/selectivizr-min']);
+                }
+                if (W.debug < 0) {
+                    //require(['ven/sharethis.lib', 'ven/sharethis.cfg', 'http://www.wellsfargomedia.com/lib/js/ga-ecg']);
+                }
+            }, 1e3);
         });
     });
 });
