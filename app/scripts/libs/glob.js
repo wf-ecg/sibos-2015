@@ -3,8 +3,6 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 function _Glob(name, desc) {
-    'use strict';
-
     var W = (W && W.window || window), C = (W.C || W.console || {});
     var self = this,
         inited = false,

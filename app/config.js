@@ -73,7 +73,7 @@ require(['ven/slice', 'ven/es5-shim', 'modern', 'lodash', 'console'], function (
                     require(['ven/msie/selectivizr-min']);
                 }
                 if (W.debug < 1) {
-                    require(['http://www.wellsfargomedia.com/lib/ga/ecg']);
+                    require(['ven/ecg-beacon']);
                 }
             }, 1e3);
         });
