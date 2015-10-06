@@ -52,8 +52,8 @@
     .shrink {
         font-size: 90%;
         line-height: 110%;
-        padding-left: 15px;
-        text-indent: -15px;
+        padding-left: $minim;
+        text-indent: -$minim;
     }
     .elim {
         display: none;
@@ -61,7 +61,7 @@
     .banner {
         img {
             margin-left: -12px;
-            max-width: 104%;
+            max-width: 99%;
         }
     }
 }
