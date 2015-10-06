@@ -14,3 +14,57 @@
 .stwrapper {
     height: 50%;
 }
+.hide {
+    display: none;
+}
+.button {
+    cursor: pointer;
+}
+.js .loading div {
+    display: none;
+}
+.clearfix {
+    @include clearfix();
+}
+.strike {
+    text-decoration: line-through;
+}
+.msie {
+    body {
+        line-height: 150%;
+
+        div.popup {
+            &.big {
+                background-image: url("../images/misc/masq.png");
+            }
+        }
+        .blocks a.learn {
+            line-height: 9px;
+            margin: 7px 3px 0 0;
+            z-index: 3;
+        }
+        .vjs-fullscreen-control {
+            display: none;
+        }
+    }
+}
+.speakers {
+    margin-top: -1em;
+    &, br {
+        clear: both;
+    }
+    img, p {
+        display: inline-block;
+        line-height: 1.2;
+        max-width: 80% !important;
+        vertical-align: middle;
+    }
+    img {
+        margin: 0.5em 0.5em 0.5em 0;
+    }
+}
+.shrink {
+    font-size: 8pt;
+    line-height: 1.2;
+    max-width: 90%;
+}
