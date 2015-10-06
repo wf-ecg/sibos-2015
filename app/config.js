@@ -47,7 +47,7 @@ require(['ven/slice', 'ven/es5-shim', 'modern', 'lodash', 'console'], function (
             }
             W.debug++;
         }
-        if (W.debug > -1) { // any debug should attempt livereload
+        if (W.debug > 0) { // any debug should attempt livereload
             require(['lr']);
             C.warn('LiveReloading');
         }
@@ -72,8 +72,8 @@ require(['ven/slice', 'ven/es5-shim', 'modern', 'lodash', 'console'], function (
                 if (W.isIE) {
                     require(['ven/msie/selectivizr-min']);
                 }
-                if (W.debug < 0) {
-                    //require(['ven/sharethis.lib', 'ven/sharethis.cfg', 'http://www.wellsfargomedia.com/lib/js/ga-ecg']);
+                if (W.debug < 1) {
+                    require(['http://www.wellsfargomedia.com/lib/ga/ecg']);
                 }
             }, 1e3);
         });
