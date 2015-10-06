@@ -34,10 +34,7 @@
         font-size: 12px;
         margin: 5px 9px;
     }
-    .external {
-        margin-left: 2px;
-    }
-    h3 img, p img:not(.external), img.fix {
+    h3 img, img.fix {
         float: right;
         margin-left: 12px;
         max-width: 66%;
@@ -49,19 +46,13 @@
     h3.chev {
         @include lightGrad();
     }
-    .shrink {
-        font-size: 90%;
-        line-height: 110%;
-        padding-left: 15px;
-        text-indent: -15px;
-    }
     .elim {
         display: none;
     }
     .banner {
         img {
             margin-left: -12px;
-            max-width: 104%;
+            max-width: 99%;
         }
     }
 }

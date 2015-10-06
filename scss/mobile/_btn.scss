@@ -36,6 +36,7 @@
         width: 55px;
     }
     .share {
+        display: none;
         @extend .button;
         float: right;
         width: 55px;
