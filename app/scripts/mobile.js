@@ -124,6 +124,8 @@ define(['jquery', 'jsmobi', 'jsview'], function
     }
 
     function _revealPage(jq, yes) {
+        Df.mobile.find('header .home').hide();
+
         if (!Df.atnav) {
             Df.current.hide();
         } else if (!yes) {
@@ -132,6 +134,7 @@ define(['jquery', 'jsmobi', 'jsview'], function
         Df.current = jq;
 
         if (yes) {
+            Df.mobile.find('header .home').fadeIn();
             jq.show();
             slide(Df.nav, 0, Df.wide * -1);
             slide(jq, Df.wide, 0);
