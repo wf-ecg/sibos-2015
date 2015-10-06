@@ -134,19 +134,11 @@ define(['jquery', 'banner', 'extract', 'mobile', 'popup', 'jsmobi', 'jsview'], f
     }
 
     function fixExternal() {
-        $('a.external').append('<img class="external">');
-
         $('.external').attr({
             title: 'Opens external site',
         });
         $('a.external, .external a').attr({
             target: 'external',
-        });
-        $('img.external, .external img').attr({
-            alt: 'external site',
-        });
-        $('img.external').attr({
-            src: './images/misc/link_icon.gif',
         });
     }
 

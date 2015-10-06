@@ -68,3 +68,23 @@
     line-height: 1.2;
     max-width: 90%;
 }
+
+a.external {
+    margin-left: 2px;
+    // CHEVRON
+    &:after {
+        background-image: url(../images/misc/link_icon.gif);
+        content: ' ';
+        display: inline-block;
+        height: 13px;
+        margin-left: 2px;
+        vertical-align: middle;
+        width: 13px;
+    }
+}
+.headshot, .landshot {
+    float: left;
+    width: 128px; height: 96px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}

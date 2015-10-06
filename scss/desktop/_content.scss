@@ -17,12 +17,6 @@
             margin: -1px;
         }
     }
-    img.external {
-        margin-top: 4px;
-        margin-left: 2px;
-        margin-right: -2px;
-        margin-bottom: -2px;
-    }
     .target {
         background-color: $hilite;
     }
@@ -33,12 +27,6 @@
 
     .givingLogo img {
         margin: 12px 22px;
-    }
-    .headshot, .landshot {
-        float: left;
-        width: 128px; height: 96px;
-        margin-bottom: 5px;
-        margin-right: 10px;
     }
     .headshot {
         width: 96px; height: 128px;
