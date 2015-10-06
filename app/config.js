@@ -34,7 +34,7 @@ require.config({
 //    }
 });
 
-require(['ven/slice', 'ven/es5-shim', 'modern', 'lodash', 'console'], function () {
+require(['ven/slice', 'console', 'modern', 'lodash'], function () {
     try {
         W.SHIET.init();
 
