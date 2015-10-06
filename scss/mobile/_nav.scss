@@ -6,6 +6,10 @@
         height: 100%;
         width: 100%;
     }
+    header .home {
+        display: none;
+        float: right;
+    }
     nav {
         @include whiteShadow;
         @include font-thick();

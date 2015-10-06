@@ -18,14 +18,11 @@ define(['jquery', 'fetch', 'mobile'], function
     var W = (W && W.window || window), C = (W.C || W.console || {});
     var name = 'Extract',
         self = {},
-        Df;
+        Df, El;
 
     Df = {// DEFAULTS
         recent: null,
-        holder: '<article>',
         home: 'h1 img.home',
-        mobileEle: '#Mobile',
-        headerEle: 'header',
         navurl: '__nav.html',
         headurl: '__head.html',
         point: 'section.port',
@@ -34,11 +31,16 @@ define(['jquery', 'fetch', 'mobile'], function
         sources: {},
         inits: function () {
             self.isInited = true;
+            $.reify(El);
 
-            this.mobileEle = $(this.mobileEle);
-            this.headerEle = $(this.headerEle);
             // this.point  set later after mobile loads?
         },
+    };
+    El = {// ELEMENTS
+        holder: '<article>',
+        home: 'h1 img.home',
+        mobileEle: '#Mobile',
+        headerEle: 'header',
     };
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -72,24 +74,23 @@ define(['jquery', 'fetch', 'mobile'], function
     function _loadNav(defer) { // get nav html
         var url = Df.navurl;
 
-        Df.extracts[url] = Df.mobileEle;
+        Df.extracts[url] = El.mobileEle;
 
-        if (Df.mobileEle.children().length) {
+        if (El.mobileEle.children().length) {
             return defer.resolve();
         }
         return takeSource(url, function (page) {
             append(page, '#Mobile');
-            Df.point = Df.mobileEle.find(Df.point).first();
-            Df.home = $(Df.home).detach();
+            Df.point = El.mobileEle.find(Df.point).first();
         }).jqxhr.promise(defer);
     }
 
     function _loadHead(defer) { // get nav html
         var url = Df.headurl;
 
-        Df.extracts[url] = Df.headerEle;
+        Df.extracts[url] = El.headerEle;
 
-        if (Df.headerEle.children().length) {
+        if (El.headerEle.children().length) {
             return defer.resolve();
         }
         return takeSource(url, function (page) {
@@ -101,13 +102,13 @@ define(['jquery', 'fetch', 'mobile'], function
         var jq = Df.extracts[url];
 
         if (!jq) { // never loaded
-            jq = $(Df.holder).hide();
+            jq = El.holder.hide().clone();
             Df.extracts[url] = jq.appendTo(Df.point);
 
             takeSource(url, function (page) {
                 append(page);
                 miniScrub(Df.extracts[url]);
-                Df.home.clone() //
+                El.home.clone() //
                     .prependTo(jq).add('header') //
                     .click(Mobile.home);
             });
@@ -122,12 +123,6 @@ define(['jquery', 'fetch', 'mobile'], function
             return null;
         }
         Df.inits();
-
-        // extend jquery
-        $.fn.scout = function (sel) { // find and/or filter
-            return this.filter(sel).add(this.find(sel));
-        };
-
     }
 
     $.extend(self, {
