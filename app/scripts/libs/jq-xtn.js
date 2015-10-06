@@ -65,6 +65,11 @@ define(['jquery'], function ($) {
 
         return url;
     };
+
+    // <scout> find and/or filter
+    $.fn.scout = function (sel) {
+        return this.filter(sel).add(this.find(sel));
+    };
     // <toString> shorthand logging of element identity
     $.fn.toString = function () {
         var out = [];

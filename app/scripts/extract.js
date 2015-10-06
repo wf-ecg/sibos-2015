@@ -122,12 +122,6 @@ define(['jquery', 'fetch', 'mobile'], function
             return null;
         }
         Df.inits();
-
-        // extend jquery
-        $.fn.scout = function (sel) { // find and/or filter
-            return this.filter(sel).add(this.find(sel));
-        };
-
     }
 
     $.extend(self, {
