@@ -18,29 +18,25 @@ define(['jquery', 'jsmobi', 'jsview'], function
     var W = (W && W.window || window), C = (W.C || W.console || {});
     var name = 'Mobile',
         self = {},
-        Df;
+        Df, El;
     var Main, Extract;
 
     Df = {// DEFAULTS
         atnav: true,
-        bezel: '<div class="bezel"></div>',
         busy: false,
         current: '',
         high: 999,
         left: 111,
-        mobile: '#Mobile',
         nav: null,
-        page: '#Desktop',
-        share: '#Share',
         time: 333,
         wide: 999,
         inits: function () {
             self.isInited = true;
+            $.reify(El);
 
-            Df.bezel = $(Df.bezel);
-            Df.page = $(Df.page);
-            Df.mobile = $(Df.mobile).show();
-            Df.nav = Df.mobile.find('article').first().addClass('nav');
+            El.mobile.show();
+            El.share.hide();
+            Df.nav = El.mobile.find('article').first().addClass('nav');
 
             if (Main.mobile) {
                 self.sizer();
@@ -58,7 +54,12 @@ define(['jquery', 'jsmobi', 'jsview'], function
             }
         }
     };
-
+    El = {// ELEMENTS
+        bezel: '<div class="bezel"></div>',
+        page: '#Desktop',
+        mobile: '#Mobile',
+        share: '#Share',
+    };
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     // HELPERS (defaults dependancy only)
 
@@ -73,12 +74,12 @@ define(['jquery', 'jsmobi', 'jsview'], function
     function share(evt) {
         evt.stopPropagation();
 
-        Df.share.fadeIn(function () {
-            Df.share.css({
+        El.share.fadeIn(function () {
+            El.share.css({
                 display: 'table',
             });
-            Df.mobile.one('click', function () {
-                Df.share.hide();
+            El.mobile.one('click', function () {
+                El.share.hide();
             });
         });
     }
@@ -99,7 +100,7 @@ define(['jquery', 'jsmobi', 'jsview'], function
     // INTERNALS
 
     function _sizer() {
-        Df.mobile.css({
+        El.mobile.css({
             height: jsView.port.visualHeight(), // .layoutHeight(),
             width: jsView.port.visualWidth(), // .layoutWidth(),
         });
@@ -124,7 +125,7 @@ define(['jquery', 'jsmobi', 'jsview'], function
     }
 
     function _revealPage(jq, yes) {
-        Df.mobile.find('header .home').hide();
+        El.mobile.find('header .home').hide();
 
         if (!Df.atnav) {
             Df.current.hide();
@@ -134,7 +135,7 @@ define(['jquery', 'jsmobi', 'jsview'], function
         Df.current = jq;
 
         if (yes) {
-            Df.mobile.find('header .home').fadeIn();
+            El.mobile.find('header .home').fadeIn();
             jq.show();
             slide(Df.nav, 0, Df.wide * -1);
             slide(jq, Df.wide, 0);
@@ -150,11 +151,11 @@ define(['jquery', 'jsmobi', 'jsview'], function
 
     function _embezelr() {
         if (!Main.mobile) {
-            Df.mobile.wrap(Df.bezel);
-            Df.page.show();
+            El.mobile.wrap(El.bezel);
+            El.page.show();
         } else {
-            Df.page.remove();
-            Df.mobile.css({
+            El.page.remove();
+            El.mobile.css({
                 zIndex: 1
             });
         }
@@ -175,8 +176,7 @@ define(['jquery', 'jsmobi', 'jsview'], function
 
     function _binding() {
         // SHARE
-        Df.share = $(Df.share).hide();
-        Df.mobile.find('header').append(Df.share);
+        El.mobile.find('header').append(El.share);
         $('img.share').click(share);
         // HOME
         $('body').on('click', '#Mobile section.port a', _slider);
