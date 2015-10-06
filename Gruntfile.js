@@ -4,8 +4,8 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         jshint: {
             files: ['Gruntfile.js',
-                'src/**/*.js', 'test/**/*.js', 'libs/*.js', 'scripts/*.js',
-                'app/**/*.js', '!app/build/**/*.js', '!app/vendor/**/*.js'],
+                'src/**/*.js', 'test/**/*.js', 'app/scripts/**/*.js',
+                '!app/build/**/*.js', '!app/vendor/**/*.js'],
             options: {
                 // options here to override JSHint defaults
                 globals: {
@@ -42,22 +42,6 @@ module.exports = function (grunt) {
                 },
                 sourceMap: true,
             },
-            boot: {
-                options: {
-                    sourceMap: false, // see uglify for map
-                },
-                files: {
-                    'app/build/boot.js': ['libs/_boot/*.js'],
-                },
-            },
-            libs: {
-                options: {
-                    sourceMap: false, // see uglify for map
-                },
-                files: {
-                    'app/build/libs.js': ['libs/**/*.js', '!libs/_boot/**'],
-                },
-            },
             main: {
                 options: {sourceMap: true, },
                 files: {
@@ -74,22 +58,6 @@ module.exports = function (grunt) {
                     unused: false,
                 },
                 mangle: false,
-            },
-            boot: {
-                options: {
-                    sourceMap: false,
-                },
-                files: {
-                    'app/build/boot.min.js': ['app/build/boot.js'],
-                }
-            },
-            libs: {
-                options: {
-                    sourceMap: false,
-                },
-                files: {
-                    'app/build/libs.min.js': ['app/build/libs.js'],
-                }
             },
             // https://github.com/gruntjs/grunt-contrib-uglify
         },
@@ -167,15 +135,7 @@ module.exports = function (grunt) {
             // WATCH
 
             options: {
-                debounceDelay: 33,
-            },
-            cap: {
-                files: ['libs/**/*.js'],
-                tasks: ['jshint', 'concat:libs', 'concat:boot', 'uglify'],
-            },
-            cat: {
-                files: ['scripts/*.js'],
-                tasks: ['jshint', 'concat:main'],
+                debounceDelay: 333,
             },
             css: {
                 files: ['scss/**/*.scss'],
@@ -190,6 +150,28 @@ module.exports = function (grunt) {
             },
             // https://github.com/gruntjs/grunt-contrib-watch
         },
+        requirejs: {
+            compile: {
+                options: {
+                    name: '../config',
+                    mainConfigFile: 'app/config.js',
+                    out: 'app/build/app.js',
+                    findNestedDependencies: true,
+                    fileExclusionRegExp: /^\./,
+                    //baseUrl: "path/to/base",
+                    //logLevel: 0,  // http://jaketrent.com/post/run-requirejs-with-gruntjs/
+                    //inlineText: true,
+                    optimize: "none",
+                    uglify: {
+                        beautify: false,
+                        max_line_length: 255,
+                        no_mangle: true
+                    },
+                    _runcmd_: 'node /usr/local/bin/r.js -o build.js'
+                },
+            },
+            // https://github.com/gruntjs/grunt-contrib-requirejs
+        },
     };
 
     grunt.initConfig(conf);
@@ -203,9 +185,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-sync');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-requirejs');
 
     grunt.registerTask('test', ['jshint', 'qunit']);
-    grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'sass:full', 'sync:clean']);
+    grunt.registerTask('default', ['jshint', /*'concat', 'uglify',*/ 'sass:full', 'requirejs', 'sync:clean']);
     grunt.registerTask('watcher', ['connect:full', 'watch']);
 
 };

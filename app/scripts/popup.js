@@ -1,14 +1,29 @@
 /*jslint white:false */
-/*globals _, C, W, Glob, Util, jQuery,
-        Main, videojs, */
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Popup = (function ($, G, U) { // IIFE
-    'use strict';
-    var name = 'Popup',
-        self = new G.constructor(name, '(popup background and display media)'),
-        Df;
+/*global _, Main, videojs, */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ recreated drt 2015-10
 
-    Df = { // DEFAULTS
+ USE
+ popup background and display media
+
+ TODO
+ document a bit
+ modernize
+
+ */
+define(['jquery', 'jsview'], function ($, jsView) { // IIFE
+    'use strict';
+
+    var W = (W && W.window || window), C = (W.C || W.console || {});
+    var name = 'Popup',
+        self = {},
+        Df;
+    var Main;
+
+    Df = {// DEFAULTS
+        inits: function () {
+            self.isInited = true;
+        },
     };
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -29,11 +44,11 @@ var Popup = (function ($, G, U) { // IIFE
         }
 
         div.appendTo('body') //
-        .data('pic', true) //
-        .bind('show.pic', function () {
-            div.addClass('big');
+            .data('pic', true) //
+            .bind('show.pic', function () {
+                div.addClass('big');
 
-        }).bind('hide.pic', function () {
+            }).bind('hide.pic', function () {
             div.removeClass('big');
 
         }).bind('mouseup', function (evt) {
@@ -91,11 +106,13 @@ var Popup = (function ($, G, U) { // IIFE
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-    function _init(jq) {
-        if (self.isInited(true)) {
+    function _init(m) {
+        if (self.isInited) {
             return null;
         }
+        Main = m;
 
+        Df.inits();
         _binding();
     }
 
@@ -107,7 +124,7 @@ var Popup = (function ($, G, U) { // IIFE
     });
 
     return self;
-}(jQuery, Glob, Util));
+});
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 

@@ -4,18 +4,21 @@
 <!--[if gt IE 8]><!-->  <html lang="en" class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <title id="head0">Wells Fargo at Sibos 2015</title>
         <meta content="ie=edge" http-equiv="x-ua-compatible">
+        <title id="head0">Wells Fargo at Sibos 2015</title>
+        <script>(function(l,i,s,t){s=l.pathname;t=s.toLowerCase().replace(/index/,i||'index');t=t.match
+            (/\w+\.\w+$/)?t:t.replace(/\/*$/,'/index.html');if(t!==s)l.pathname=t;}(location));</script>
         <!--[if lt IE 10]><script>isIE=!0</script><![endif]-->
         <meta content="Originally built by WF-ECG INTERACTIVE (Wells Fargo Enterprise Creative Group).
               We design and develop with a focus on web standards and best practices." name="author">
         <meta content="Wells Fargo is proud to be hosting our annual Sibos Celebration reception.
               Celebrate the winning power of teamwork and partnership with Wells Fargo at 2015 Sibos in Singapore." name="description">
         <!--  -->
-        <script>location.href.match(/.*(\/[^\.\/]+)+$/)&&(location.href+='/')</script>
-        <script src="./_root.js"></script>
         <link href="./build/screen.css" media="all" rel="stylesheet" type="text/css">
-        <script defer src="./_load.js"></script>
+        <script src="/lib/requirejs/2.1.17/require.js"
+                data-main="./build/app"
+                data-main="./config"
+        ></script>
         <!--  -->
         <script src="./vendor/galleria/galleria-1.2.9.js"></script>
         <script>
@@ -96,6 +99,5 @@
         </div>
         <div id="Mobile"></div>
 
-        <!--/livereload.js?snipver=1--><script>ROOT.reload();</script>
     </body>
 </html>

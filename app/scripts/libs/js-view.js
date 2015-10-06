@@ -1,18 +1,14 @@
 /*jslint white:false */
-/*globals window, jQuery */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var jsView = (function (W, $) { // IIFE
+define(['jquery'], function ($) { // IIFE
     'use strict';
-    var C = W.console,
-        D = W.document,
+
+    var W = (W && W.window || window), C = (W.C || W.console || {});
+    var D = W.document,
         E = D.documentElement,
         S = W.screen,
         name = 'jsView',
         self = {};
-
-    function _debug(n) {
-        return W.debug >= (n || 0);
-    }
 
     self.device = {
         client: W.navigator.userAgent,
@@ -52,7 +48,7 @@ var jsView = (function (W, $) { // IIFE
         },
         _widths: function () {
             return {
-                s: [ 'width/' + S.width,
+                s: ['width/' + S.width,
                     'availW/' + S.availWidth] + String(),
                 w: ['innerW/' + W.innerWidth,
                     'outerW/' + W.outerWidth] + String(),
@@ -104,17 +100,13 @@ var jsView = (function (W, $) { // IIFE
         },
     };
 
-    if (_debug()) {
-        C.log([name], self.mobile.agent());
-    }
-
     return self;
-}(window, jQuery));
+});
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /*
 
-    TODO: integrate into other js-view efforts
+ TODO: integrate into other js-view efforts
 
  */

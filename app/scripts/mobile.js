@@ -1,14 +1,27 @@
 /*jslint white:false */
-/*globals _, C, W, Glob, Util, jQuery,
-        Extract, Main, Mobile:true, jsMobi, jsView, */
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Mobile = (function ($, G, U) { // IIFE
-    'use strict';
-    var name = 'Mobile',
-        self = new G.constructor(name, '(mobile nav and page swapper)'),
-        Df;
+/*global _ */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ recreated drt 2015-10
 
-    Df = { // DEFAULTS
+ USE
+ mobile nav and page swapper
+
+ TODO
+ document a bit
+ modernize
+
+ */
+define(['jquery', 'util', 'jsmobi', 'jsview'], function
+    ($, U, jsMobi, jsView) { // IIFE
+    'use strict';
+
+    var W = (W && W.window || window), C = (W.C || W.console || {});
+    var name = 'Mobile',
+        self = {},
+        Df;
+    var Main, Extract;
+
+    Df = {// DEFAULTS
         atnav: true,
         bezel: '<div class="bezel"></div>',
         busy: false,
@@ -22,6 +35,8 @@ var Mobile = (function ($, G, U) { // IIFE
         time: 333,
         wide: 999,
         inits: function () {
+            self.isInited = true;
+
             Df.bezel = $(Df.bezel);
             Df.page = $(Df.page);
             Df.mobile = $(Df.mobile).show();
@@ -176,10 +191,13 @@ var Mobile = (function ($, G, U) { // IIFE
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-    function _init() {
-        if (self.isInited(true)) {
+    function _init(m, e) {
+        if (self.isInited) {
             return null;
         }
+        Main = m;
+        Extract = e;
+
         Df.inits();
         _embezelr();
         _binding();
@@ -202,24 +220,24 @@ var Mobile = (function ($, G, U) { // IIFE
     });
 
     return self;
-}(jQuery, Glob, Util));
+});
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /*
 
-find nav
-    suppress default
-    detect target page
-    check db
-        is older than
-            ajax fetch
-        else
-            use it
-    slide out nav
-    slide in body
-        article group?
-        take composition cues from ajax page
-        a div in there suggest what to knit
+ find nav
+ suppress default
+ detect target page
+ check db
+ is older than
+ ajax fetch
+ else
+ use it
+ slide out nav
+ slide in body
+ article group?
+ take composition cues from ajax page
+ a div in there suggest what to knit
 
  */

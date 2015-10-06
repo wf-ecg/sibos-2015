@@ -1,11 +1,14 @@
 /*jslint white:false */
-/*globals _, C, W, jQuery */
+/*global _, NaN */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /// EXTENDS
 //
 // JQUERY
 //
-(function ($) {
+define(['jquery'], function ($) {
+    'use strict';
+
+    var W = (W && W.window || window), C = (W.C || W.console || {});
     var EMPT = '';
     var ZWSP = '&#x200b;';
     var urlParseRE = /^\s*(((([^:\/#\?]+:)?(?:(\/\/)((?:(([^:@\/#\?]+)(?:\:([^:@\/#\?]+))?)@)?(([^:\/#\?\]\[]+|\[[^\/\]@#?]+\])(?:\:([0-9]+))?))?)?)?((\/?(?:[^\/\?#]+\/+)*)([^\?#]*)))?(\?[^#]+)?)(#.*)?/;
@@ -48,11 +51,12 @@
         url.hashbang = /^!/.exec(url.hashstring) && url.hashstring.slice(1);
         url.params = (function () {
             var ret = {},
-            seg = url.search.replace(/^\?/, '').split('&'),
-            len = seg.length,
-            i, s;
+                seg = url.search.replace(/^\?/, '').split('&'),
+                len = seg.length,
+                i, s;
             for (i = 0; i < len; i++) {
-                if (!seg[i]) continue;
+                if (!seg[i])
+                    continue;
                 s = seg[i].split('=');
                 ret[s[0]] = s[1];
             }
@@ -108,11 +112,11 @@
 
         var l0 = me.scrollLeft();
         var l1 = me.scrollLeft(1);
-        var ln = dirty ? (l0 || l1): me.scrollLeft(1e6).scrollLeft();
+        var ln = dirty ? (l0 || l1) : me.scrollLeft(1e6).scrollLeft();
 
         var t0 = me.scrollTop();
         var t1 = me.scrollTop(1);
-        var tn = dirty ? (t0 || t1): me.scrollTop(1e6).scrollTop();
+        var tn = dirty ? (t0 || t1) : me.scrollTop(1e6).scrollTop();
 
         if (!dirty) {
             me.scrollLeft(l0);
@@ -155,7 +159,7 @@
 
     $.scrollTo = function (ele, ms) {
         var $me = $(ele),
-            doc = $.browser.msie ? 'html' : 'body';
+            doc = W.isIE ? 'html' : 'body';
 
         if ($me.length) {
             $(doc).stop().animate({
@@ -182,7 +186,7 @@
         }
         return str;
     };
-}(jQuery));
+});
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /*
 
