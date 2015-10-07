@@ -88,3 +88,42 @@ a.external {
     margin-bottom: 5px;
     margin-right: 10px;
 }
+
+#stickyBar {
+    @include transition( all .3s );
+    bottom: 45%;
+    left: 0;
+    margin-left: -1em;
+    padding: 0.5em;
+    position: fixed;
+    z-index: 4;
+    &:hover {
+        margin-left: -0.6em;
+    }
+    td {
+        background-color: gray;
+        border-radius: 0 3px 3px 0;
+        box-shadow: 0 0 0.5em black;
+        height: 3em;
+        text-align: center;
+        vertical-align: middle;
+        width: 2em;
+        &:hover {
+            width: 3em;
+        }
+    }
+    ul.socialcount {
+        margin: 0.1em;
+        li {
+            background: none;
+        }
+        a {
+            border-radius: 6px;
+            padding: 0;
+            &:hover {
+                background-color: #777777;
+                width: 2.5em;
+            }
+        }
+    }
+}
