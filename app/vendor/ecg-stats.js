@@ -1,13 +1,16 @@
 /*jslint white:false */
 /*global define, ga, Stats:true, */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- recreated drt 2015-09
+ recreated drt 2015-10
 
  USE
- singleton to message event updates to Google Analytics
+ singleton
+ check events for set interval (def:1.5s)
+ message event updates to Google Analytics
 
  TODO
  document a bit
+ integrate with beacon better
  */
 
 define(['jquery', 'lodash'], function
@@ -19,17 +22,18 @@ define(['jquery', 'lodash'], function
     var Db = W.debug > 0;
     var Df = {// DEFAULTS
         controls: 'a, button',
-        key: 'WfW-Q4',
+        key: 'ECG-Stats',
         lastAction: null,
-        time: 1500,
+        time: 1.5,
     };
 
-// HELPERS (defaults dependancy only)
     function Stats() {
     }
-    function dump(msg) {
+
+// HELPERS (defaults dependancy only)
+    function _dump(msg) {
         if (Db && msg) {
-            C.info(Nom, '(dump)', [Df.key, msg]);
+            C.debug(Nom, '(dump)', [Df.key, msg]);
         }
     }
     function send(msg) {
@@ -47,16 +51,22 @@ define(['jquery', 'lodash'], function
             self.update(Df.lastAction);
         }
     }
+    function _getString(me) {
+        return (me.children()[0] ||
+            me.get(0)).innerText ||
+            me.attr('href') ||
+            me.children().first().attr('alt');
+    }
     function _makeMessage(evt) {
         var me, msg, str, tag, type;
 
         me = $(evt.currentTarget);
         msg = me.data('stat') || '';
-        str = (me.children()[0] || me.get(0)).innerText || me.attr('href');
+        str = _getString(me);
         tag = me.prop('tagName');
         type = evt.type;
 
-        if (!msg)
+        if (!msg) {
             switch (tag) {
                 case 'A':
                     msg = ('Link:' + str);
@@ -67,8 +77,9 @@ define(['jquery', 'lodash'], function
                 default:
                     msg = me.parent().get(0).className;
             }
+        }
         if (msg) {
-            msg = msg + ':' + type;
+            msg = type + ':' + msg;
         }
         return msg;
     }
@@ -95,7 +106,7 @@ define(['jquery', 'lodash'], function
 
     $.extend(true, self, {
         init: _.once(init),
-        update: _.debounce(update, Df.time),
+        update: _.debounce(update, Df.time * 1000),
     });
 
     return self;
@@ -105,10 +116,10 @@ define(['jquery', 'lodash'], function
 /*
  *  SYNTAX 1                    // Value     Type     Required   Description
  *  ga('send', 'event',
- *      'category',             // Category  String   Yes        Typically the object that was interacted with (e.g. button)
- *      'action',               // Action    String   Yes        The type of interaction (e.g. click)
- *          'opt_label',        // Label     String   No         Useful for categorizing events (e.g. nav buttons)
- *          opt_value,          // Value     Number   No         Values must be non-negative. Useful to pass counts (e.g. 4 times)
+ *     'category',              // Category  String   Yes        Typically the object that was interacted with (e.g. button)
+ *     'action',                // Action    String   Yes        The type of interaction (e.g. click)
+ *      'opt_label',            // Label     String   No         Useful for categorizing events (e.g. nav buttons)
+ *      'opt_value',            // Value     Number   No         Values must be non-negative. Useful to pass counts (e.g. 4 times)
  *      {'nonInteraction': 1}   // EvtCf?    Field    No         Key/Value pairs define specific field names and values accepted by analytics.js
  *  );
  *

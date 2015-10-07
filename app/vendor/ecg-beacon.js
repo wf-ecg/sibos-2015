@@ -1,14 +1,17 @@
 /*jslint white:false */
-/*global window, define */
+/*global define, ga, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-recreated drt 2015-09
- try to make analytics event for every page interaction
+ recreated drt 2015-10
+
+ USE
+ constructor
+ buffer analytics event for every page interaction
  prevent new events for set interval (def:15s)
 
  TODO
- sudo singleton --- modernize into constructor
+ document a bit
 
-*/
+ */
 define(function () {
     'use strict';
 
@@ -39,35 +42,37 @@ define(function () {
             C.log(arguments); // IE
         }
     }
-    function time() {
+    function _now() {
         return (1 * new Date());
     }
 
+// EXPOSED (prototype interface)
     Api = {
-        interval: 15e3, // 15 second intervals
         _: Nom,
         db: null,
+        interval: 15e3, // 15 second intervals
+        key: 'engagement',
         nom: Nom,
         getStart: function () {
-            start = (start || time());
+            start = (start || _now());
             return start;
         },
         getSpent: function () {
-            return time() - this.getStart();
+            return _now() - this.getStart();
         },
         throttle: function (func, wait) {
             var args, result, thisArg,
-                previous = time(),
+                previous = _now(),
                 timeoutId = null;
 
             function trailingCall() {
-                previous = time();
+                previous = _now();
                 timeoutId = null;
                 result = func.apply(thisArg, args);
             }
 
             return function () {
-                var now = time(),
+                var now = _now(),
                     elapsed = now - previous,
                     remaining = wait - elapsed;
 
@@ -85,25 +90,25 @@ define(function () {
                 return result;
             };
         },
-        sendBeacon: function (act) {
-            (W.ga ? W.ga : log)('send', {
-                'eventLabel': this.nom,
-                'hitType': 'event',
-                'eventCategory': 'engagement',
-                'eventAction': act,
-                'eventValue': (this.getSpent() / 1000 | 0)
+        sendBeacon: function (msg) {
+            (W.ga ? W.ga : _dump)('send', {
+                eventLabel: this.nom,
+                hitType: 'event',
+                eventCategory: this.key,
+                eventAction: msg,
+                eventValue: (this.getSpent() / 1000 | 0), // seconds > 0
             });
         },
         makeLimitedSend: function () {
             var self = this;
-            log(Nom, 'running ' + (W.ga ? 'LIVE' : 'in debug'), this);
+            _log(this.nom, 'running ' + (W.ga ? 'LIVE' : 'in debug'), this);
 
             return this.throttle(function () {
                 self.sendBeacon('movement');
             }, this.interval);
         },
-        init: function (sec, nom) {
-            start = time();
+        init: function (sec) {
+            start = _now();
             this.db = W.debug > 0;
             this.interval = sec ? sec * 1000 : this.interval;
 
@@ -122,7 +127,9 @@ define(function () {
 
 // CONSTRUCT
     function Beacon(sec, nom) {
-        if (nom) this.nom = nom;
+        if (nom) {
+            this.nom = nom;
+        }
         this.init(sec, nom);
         C.log('this', this);
         this.constructor = Beacon;
