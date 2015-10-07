@@ -35,9 +35,13 @@ define(function () {
         m.parentNode.insertBefore(a, m);
     }
 
-    function log() {
-        if (C.log.apply) {
-            C.log.apply(C, arguments);
+// HELPERS (defaults dependancy only)
+    function _dump() {
+        _log(Nom, '(dump)', arguments[1]);
+    }
+    function _log() {
+        if (C.debug.apply) {
+            C.debug.apply(C, arguments);
         } else {
             C.log(arguments); // IE
         }
@@ -51,8 +55,9 @@ define(function () {
         _: Nom,
         db: null,
         interval: 15e3, // 15 second intervals
-        key: 'engagement',
         nom: Nom,
+        act: 'engagement',
+        lab: 'movement',
         getStart: function () {
             start = (start || _now());
             return start;
@@ -90,12 +95,12 @@ define(function () {
                 return result;
             };
         },
-        sendBeacon: function (msg) {
+        sendBeacon: function () {
             (W.ga ? W.ga : _dump)('send', {
-                eventLabel: this.nom,
                 hitType: 'event',
-                eventCategory: this.key,
-                eventAction: msg,
+                eventCategory: this.nom,
+                eventAction: this.act,
+                eventLabel: this.lab,
                 eventValue: (this.getSpent() / 1000 | 0), // seconds > 0
             });
         },
@@ -104,7 +109,7 @@ define(function () {
             _log(this.nom, 'running ' + (W.ga ? 'LIVE' : 'in debug'), this);
 
             return this.throttle(function () {
-                self.sendBeacon('movement');
+                self.sendBeacon();
             }, this.interval);
         },
         init: function (sec) {
@@ -131,10 +136,9 @@ define(function () {
             this.nom = nom;
         }
         this.init(sec, nom);
-        C.log('this', this);
         this.constructor = Beacon;
     }
-    Beacon.prototype = Api;
 
+    Beacon.prototype = Api;
     return Beacon;
 });

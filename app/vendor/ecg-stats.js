@@ -5,6 +5,7 @@
 
  USE
  singleton
+ instantiate a beacon to time page interactions
  check events for set interval (def:1.5s)
  message event updates to Google Analytics
 
@@ -13,8 +14,8 @@
  integrate with beacon better
  */
 
-define(['jquery', 'lodash'], function
-    KLASS($, _) {
+define(['jquery', 'lodash', 'ven/ecg-beacon'], function
+    KLASS($, _, Beacon) {
     'use strict';
 
     var Nom = 'Stats', self;
@@ -36,11 +37,14 @@ define(['jquery', 'lodash'], function
             C.debug(Nom, '(dump)', [Df.key, msg]);
         }
     }
-    function send(msg) {
+    function _send(msg) {
         if (W.ga) {
-            ga('send', 'event', Df.key, msg, {
-                'nonInteraction': true
-            });
+            ga('send',
+                'event', // hit type
+                Df.key, //  category
+                msg, //     action, // [label], // [value],
+                {'nonInteraction': true} // EvtCf?
+            );
         }
     }
 
@@ -83,21 +87,28 @@ define(['jquery', 'lodash'], function
         }
         return msg;
     }
+    function _bindings() {
+        Df.beacon = new Beacon(Df.time * 10, Df.key);
 
-// PUBLIC
-    function update(msg) {
-        (W.ga ? send : dump)(msg);
-    }
-    function init() {
         $('body').on('click keypress', Df.controls, function (evt) {
             W.lastAction = _makeMessage(evt);
         });
+        W.setInterval(_getActive, Df.time * 100); // record last activity
+    }
 
+// PUBLIC
+    function update(msg) {
+        (W.ga ? _send : _dump)(msg);
+    }
+    function init(key, sel) {
         if (Db) {
             self.Df = Df;
-            C.log(Nom + '[[init]]', self);
+            C.debug('[[init]]', self);
         }
-        W.setInterval(_getActive, Df.time);
+        Df.key = key || Df.key;
+        Df.controls = sel || Df.controls;
+
+        _bindings();
         return self;
     }
 

@@ -72,8 +72,10 @@ require(['ven/slice', 'console', 'modern', 'lodash'], function () {
                 if (W.isIE) {
                     require(['ven/msie/selectivizr-min']);
                 }
-                if (W.debug < 1) {
-                    require(['ven/ecg-beacon']);
+                if (W.debug < 2) {
+                    require(['ven/ecg-stats'], function (stats) {
+                        stats.init('SIBOS-2015');
+                    });
                 }
             }, 1e3);
         });
