@@ -1,5 +1,5 @@
 /*jslint white:false */
-/*global require, window */
+/*global _, require, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 var W = (W && W.window || window), C = (W.C || W.console || {});
 
@@ -61,7 +61,7 @@ require(['ven/slice', 'console', 'modern', 'lodash'], function () {
         require(['ven/msie/split', 'ven/msie/respond.min']);
     }
 
-    require(['jqxtn', 'glob'], function () {
+    require(['jqxtn'], function () {
         W.ShareStrings = {};
         W.switchTo5x = true;
 
