@@ -1,4 +1,4 @@
-/*jslint white:false */
+/*jslint white:false, -W069, -W009 */
 /*global define, ga, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  recreated drt 2015-10

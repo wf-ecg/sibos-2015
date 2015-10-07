@@ -16,12 +16,14 @@ require.config({
         jquery: '/lib/jquery/1.11.3/jquery',
         lodash: '/lib/underscore/js-1.4.4/lodash.underscore',
         modern: '/lib/modernizr/2.6.2/modernizr.min',
-
+        //
         console: 'libs/console',
         util: 'libs/util',
-        glob: 'libs/glob',
+        modal: 'libs/modal',
         fetch: 'libs/fetch',
-
+        //
+        beacon: 'libs/ecg-beacon',
+        stats: 'libs/ecg-stats',
         jsmobi: 'libs/js-mobi',
         jsview: 'libs/js-view',
         jqxtn: 'libs/jq-xtn',
@@ -73,7 +75,7 @@ require(['ven/slice', 'console', 'modern', 'lodash'], function () {
                     require(['ven/msie/selectivizr-min']);
                 }
                 if (W.debug < 2) {
-                    require(['ven/ecg-stats'], function (stats) {
+                    require(['stats'], function (stats) {
                         stats.init('SIBOS-2015');
                     });
                 }
