@@ -36,7 +36,6 @@ define(['jquery', 'jsview'], function ($, jsView) { // IIFE
         lnk.bind('click', function (evt) {
             evt.preventDefault();
             div.trigger('show.pic');
-            return false;
         });
 
         if (div.data('pic')) {
