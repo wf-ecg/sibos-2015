@@ -4,7 +4,7 @@
 var W = (W && W.window || window), C = (W.C || W.console || {});
 
 W.SHIET = {};
-W.debug = 0;
+W.debug = Number(new Date('2015/10/01') > new Date());
 
 require.config({
     baseUrl: 'scripts',
