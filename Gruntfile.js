@@ -162,7 +162,7 @@ module.exports = function (grunt) {
                     //logLevel: 0,  // http://jaketrent.com/post/run-requirejs-with-gruntjs/
                     //inlineText: true,
                     //generateSourceMaps: true,
-                    optimize: 'none',
+                    //optimize: 'none',
                     uglify: {
                         beautify: false,
                         max_line_length: 255,

@@ -154,6 +154,16 @@ define(['jquery', 'banner', 'extract', 'mobile', 'modal', 'popup', 'jsmobi', 'js
         });
     }
 
+    function watchInputDevice() {
+        $('body').on('keydown', function () {
+            $(this).removeClass('mouse');
+            $(this).addClass('keyboard');
+        }).on('mousemove', function () {
+            $(this).removeClass('keyboard');
+            $(this).addClass('mouse');
+        });
+    }
+
     function _binder() {
         _device();
         _activeNav();
@@ -164,9 +174,6 @@ define(['jquery', 'banner', 'extract', 'mobile', 'modal', 'popup', 'jsmobi', 'js
 
         $('body').removeClass('loading');
 
-        if (W.debug > 0) {
-            $('html').addClass('debug');
-        }
         if (C && C.groupCollapsed) {
             C.groupEnd();
         }
@@ -194,7 +201,7 @@ define(['jquery', 'banner', 'extract', 'mobile', 'modal', 'popup', 'jsmobi', 'js
 
         dfInit();
         fixExternal();
-        Extract.init();
+        watchInputDevice();
         Extract.init();
 
         if (_whatPage() === 'mini.html') {
