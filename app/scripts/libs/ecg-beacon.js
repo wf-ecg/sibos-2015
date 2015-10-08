@@ -1,4 +1,4 @@
-/*jslint white:false */
+/*jslint white:false, -W069, -W009 */
 /*global define, ga, window */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  recreated drt 2015-10
@@ -56,8 +56,8 @@ define(function () {
         db: null,
         interval: 15e3, // 15 second intervals
         nom: Nom,
-        act: 'engagement',
-        lab: 'movement',
+        act: 'mousemove',
+        lab: 'engagement',
         getStart: function () {
             start = (start || _now());
             return start;
@@ -101,7 +101,7 @@ define(function () {
                 eventCategory: this.nom,
                 eventAction: this.act,
                 eventLabel: this.lab,
-                eventValue: (this.getSpent() / 1000 | 0), // seconds > 0
+                eventValue: this.interval, // seconds > 0
             });
         },
         makeLimitedSend: function () {
@@ -110,12 +110,12 @@ define(function () {
 
             return this.throttle(function () {
                 self.sendBeacon();
-            }, this.interval);
+            }, this.interval * 1000);
         },
         init: function (sec) {
             start = _now();
             this.db = W.debug > 0;
-            this.interval = sec ? sec * 1000 : this.interval;
+            this.interval = sec ? sec : this.interval;
 
             if (!W.ga && !this.db) { // really load analytics?
                 isogram(W, W.document, 'script', goog, 'ga');
@@ -124,8 +124,8 @@ define(function () {
             }
 
             this.init = W.addEventListener ? // respond to any movement
-                W.document.addEventListener('mousemove', this.makeLimitedSend()) :
-                W.document.attachEvent('onmousemove', this.makeLimitedSend()); // IE
+                W.document.addEventListener(this.act, this.makeLimitedSend()) :
+                W.document.attachEvent('on' + this.act, this.makeLimitedSend()); // IE
             delete this.init; // prevent double-bind
         },
     };

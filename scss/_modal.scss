@@ -1,0 +1,103 @@
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+/* _modal.scss */
+
+.modal {
+    background-color : rgba(33, 33, 33, 0.8);
+    display          : none;
+    z-index          : 1000;
+    /* cover */
+    position         : fixed;
+    left             : 0;
+    top              : 0;
+    width            : 100%;
+    height           : 100%;
+
+    &.active {
+        display : block;
+    }
+    & > div {
+        background-color : white;
+        border-radius    : 3px;
+        box-shadow       : 0 3px 24px -4px black;
+        display          : block;
+        z-index          : 1100;
+        /* center */
+        position         : absolute;
+        margin           : auto;
+        top              : 0;
+        right            : 0;
+        bottom           : 0;
+        left             : 0;
+        width            : 960px;
+        height           : 540px;
+    }
+    & > div a.closer {
+        background: url('../images/buttons/close.png') no-repeat;
+        height   : 32px;
+        position : absolute;
+        right    : -20px;
+        top      : -15px;
+        width    : 32px;
+        z-index  : 9;
+    }
+    & > div a.closer img {
+        border : 0;
+    }
+}
+
+/* Begin Customize - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.modal {
+    .dialog {
+        border: 4px solid #807f7d;
+        font-family: Verdana, Arial, sans-serif;
+        font-size: 90%;
+        line-height: 1.5em;
+        padding: 0 20px;
+        width: 450px; height: 440px;
+    }
+    .dialog .header {
+        border-bottom: 3px solid #dfdfdf;
+        margin: 0 0 18px;
+        padding: 20px 0 12px;
+        text-align: left;
+    }
+    .dialog .content {
+        height: 250px;
+    }
+    .dialog .content h2 {
+        color: #444;
+        font-family: Verdana, Arial, sans-serif;
+        font-size: 115%;
+        font-weight: bold;
+        margin: 0 0 7px;
+    }
+    .dialog .footer {
+        height: 30px;
+        margin: 0;
+        padding: 20px 0;
+        text-align: right;
+    }
+    .dialog .footer a {
+        margin-left: 15px;
+    }
+    .dialog .utilitybtn {
+        background-color: #5174b8;
+        @include background-image(linear-gradient(top, #5174b8 0, #3d62a3 50%, #335898 52%, #244a87 100%));
+        border: 0;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+        display: inline;
+        font-weight: 700;
+        margin-right: 5px;
+        overflow: visible;
+        padding: 7px 15px;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: none;
+        white-space: nowrap;
+        z-index: 1;
+    }
+}
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

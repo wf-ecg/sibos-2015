@@ -9,7 +9,7 @@
  */
 var W = (W && W.window || window), C = (W.C || W.console || {});
 
-define('console', ['jquery'], function ($) {
+define(['jquery'], function ($) {
     'use strict';
 
     var W = (W || window), C = (C || W.console || {

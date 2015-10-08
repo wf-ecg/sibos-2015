@@ -14,7 +14,7 @@
  integrate with beacon better
  */
 
-define(['jquery', 'lodash', 'ven/ecg-beacon'], function
+define(['jquery', 'lodash', 'beacon'], function
     KLASS($, _, Beacon) {
     'use strict';
 
@@ -22,7 +22,7 @@ define(['jquery', 'lodash', 'ven/ecg-beacon'], function
     var W = (W && W.window || window), C = (W.C || W.console || {});
     var Db = W.debug > 0;
     var Df = {// DEFAULTS
-        controls: 'a, button',
+        controls: 'a, button, input',
         key: 'ECG-Stats',
         lastAction: null,
         time: 1.5,
@@ -38,7 +38,7 @@ define(['jquery', 'lodash', 'ven/ecg-beacon'], function
         }
     }
     function _send(msg) {
-        if (W.ga) {
+        if (W.ga && msg) {
             ga('send',
                 'event', // hit type
                 Df.key, //  category
@@ -52,7 +52,7 @@ define(['jquery', 'lodash', 'ven/ecg-beacon'], function
     function _getActive() {
         if (W.lastAction !== Df.lastAction) {
             Df.lastAction = W.lastAction;
-            self.update(Df.lastAction);
+            self.update();
         }
     }
     function _getString(me) {
@@ -98,7 +98,8 @@ define(['jquery', 'lodash', 'ven/ecg-beacon'], function
 
 // PUBLIC
     function update(msg) {
-        (W.ga ? _send : _dump)(msg);
+        (W.ga ? _send : _dump)(Df.lastAction);
+        W.lastAction = '';
     }
     function init(key, sel) {
         if (Db) {

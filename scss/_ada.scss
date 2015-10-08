@@ -1,0 +1,58 @@
+/* _ada.scss */
+
+.ada, %hidden, .hidden {
+    display: initial!important;
+    height: 1px;
+    left: -5000px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    visibility: visible!important;
+    width: 1px;
+}
+::selection, .selection {
+    text-shadow: 1px 2px 3px gray;
+}
+.keyboard {
+    :focus, .focus {
+        outline-color: yellow;
+    }
+}
+.mouse {
+    :focus, .focus {
+        outline: none;
+    }
+}
+
+.hidden {
+    @extend %hidden;
+}
+i.fa-external-link::after {
+    @extend %hidden;
+    content: 'External link';
+}
+
+.social-icon {
+    color: transparent;
+    font-size: 1px;
+}
+.externals .note {
+    color: #666;
+}
+[data-footnote] {
+    cursor: pointer;
+}
+.video-js :focus {
+    outline: yellow solid 4px !important;
+    outline-offset: -2px !important;
+}
+
+.accordion-toggle {
+    &::after {
+        content: ' Closed';
+    }
+    &.collapsed::after {
+        content: ' Open';
+    }
+}
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

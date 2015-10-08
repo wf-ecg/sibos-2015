@@ -11,8 +11,8 @@
  modernize
 
  */
-define(['jquery', 'banner', 'extract', 'mobile', 'popup', 'jsmobi', 'jsview'], function
-    ($, Banner, Extract, Mobile, Popup, jsMobi, jsView) { // IIFE
+define(['jquery', 'banner', 'extract', 'mobile', 'modal', 'popup', 'jsmobi', 'jsview'], function
+    ($, Banner, Extract, Mobile, Modal, Popup, jsMobi, jsView) { // IIFE
     'use strict';
 
     var W = (W && W.window || window), C = (W.C || W.console || {});
@@ -69,6 +69,18 @@ define(['jquery', 'banner', 'extract', 'mobile', 'popup', 'jsmobi', 'jsview'], f
     }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// HANDLERS
+
+    function _bindModal() {
+        $('.modal').first().appendTo('body');
+
+        var dialog = $('.modal .dialog'); // thing to show
+        var triggers = $('#stickyBar .sidesocial a'); // intercept these
+
+        Modal.bind(triggers, dialog, function (evt) {
+            dialog.find('.utilitybtn') // find the go button
+                .attr('href', evt.delegateTarget.href); // transfer url
+        });
+    }
 
     function _whatPage(x) {
         x = x || W.location.pathname;
@@ -142,17 +154,26 @@ define(['jquery', 'banner', 'extract', 'mobile', 'popup', 'jsmobi', 'jsview'], f
         });
     }
 
+    function watchInputDevice() {
+        $('body').on('keydown', function () {
+            $(this).removeClass('mouse');
+            $(this).addClass('keyboard');
+        }).on('mousemove', function () {
+            $(this).removeClass('keyboard');
+            $(this).addClass('mouse');
+        });
+    }
+
     function _binder() {
         _device();
         _activeNav();
         _addMetas();
+        _bindModal();
+
         $('p.rotator').each(startRotator);
 
         $('body').removeClass('loading');
 
-        if (W.debug > 0) {
-            $('html').addClass('debug');
-        }
         if (C && C.groupCollapsed) {
             C.groupEnd();
         }
@@ -180,6 +201,7 @@ define(['jquery', 'banner', 'extract', 'mobile', 'popup', 'jsmobi', 'jsview'], f
 
         dfInit();
         fixExternal();
+        watchInputDevice();
         Extract.init();
 
         if (_whatPage() === 'mini.html') {

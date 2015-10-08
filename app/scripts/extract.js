@@ -23,8 +23,8 @@ define(['jquery', 'fetch', 'mobile'], function
     Df = {// DEFAULTS
         recent: null,
         home: 'h1 img.home',
-        navurl: '__nav.html',
-        headurl: '__head.html',
+        navurl: '_nav.html',
+        partsurl: '_parts.html',
         point: 'section.port',
         container: '.content',
         extracts: {},
@@ -86,7 +86,7 @@ define(['jquery', 'fetch', 'mobile'], function
     }
 
     function _loadHead(defer) { // get nav html
-        var url = Df.headurl;
+        var url = Df.partsurl;
 
         Df.extracts[url] = El.headerEle;
 

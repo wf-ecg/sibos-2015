@@ -1,1 +1,4 @@
 media/*/*.jpg
+/.sass-cache/
+/node_modules/
+/app/build/
