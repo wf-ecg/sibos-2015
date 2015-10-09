@@ -26,10 +26,10 @@ define(['jquery'], function ($) {
         gtie11: undefined,
         trident: W.navigator.userAgent.indexOf('rident') + 1,
         init: function () {
+            this.jqsays = $.browser && $.browser.msie;
             this.ltie9();
             if (!$.fn)
                 throw new Error('init requires jquery');
-            this.jqsays = $.browser && $.browser.msie;
             if (this.trident && !this.jqsays)
                 this.gtie11 = true;
             if (this.trident)
