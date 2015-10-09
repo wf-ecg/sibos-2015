@@ -1,4 +1,5 @@
 /*jslint white:false */
+/*global _, define */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 define(['jquery'], function ($) { // IIFE
     'use strict';

@@ -18,7 +18,6 @@ require.config({
         modern: '/lib/modernizr/2.6.2/modernizr.min',
         //
         console: 'libs/console',
-        util: 'libs/util',
         modal: 'libs/modal',
         fetch: 'libs/fetch',
         //
