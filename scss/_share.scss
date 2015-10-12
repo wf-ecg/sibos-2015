@@ -1,0 +1,51 @@
+/* _share.scss */
+
+$EM: 18px;
+
+.shares {
+    font-size: $EM;
+    line-height: 1.5;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+.shares :link,
+.shares :visited {
+    color: inherit;
+}
+.shares > li {
+    background-color: gray;
+    border-radius: 0.25em;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    zoom: 1;
+}
+.shares > li > a {
+    color: inherit;
+    display: block;
+    text-decoration: none;
+    width: 2em;
+}
+.social-icon {
+    zoom: 1;
+}
+.icon-sprite,
+.icon-facebook,
+.icon-googleplus,
+.icon-pinterest,
+.icon-share,
+.icon-twitter {
+    &::after {
+        font-size: $EM;
+        color: white;
+        font-family: FontAwesome;
+        position: relative;
+    }
+}
+.icon-facebook::after { content: '\f164'; }
+.icon-googleplus::after { content: '\f0d5'; top: 1px; }
+.icon-pinterest::after { content: '\f231'; }
+.icon-share::after { content: '\f045'; top: 2px; }
+.icon-twitter::after { content: '\f099'; }

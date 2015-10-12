@@ -74,7 +74,7 @@ define(['jquery', 'banner', 'extract', 'mobile', 'modal', 'popup', 'jsmobi', 'js
         $('.modal').first().appendTo('body');
 
         var dialog = $('.modal .dialog'); // thing to show
-        var triggers = $('#stickyBar .sidesocial a'); // intercept these
+        var triggers = $('#stickyBar .shares a'); // intercept these
 
         Modal.bind(triggers, dialog, function (evt) {
             dialog.find('.utilitybtn') // find the go button

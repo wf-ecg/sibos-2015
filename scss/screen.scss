@@ -3,7 +3,7 @@
 @import "compass/css3/transition";
 @import "compass/css3/user-interface";
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-@import url('../vendor/socialcount/socialcount-with-icons.css');
+@import url('/lib/font-awesome/4.3.0/css/font-awesome.min.css');
 @import "core/_all";
 @import "proj/_all";
 @import "desktop/_all";
@@ -33,4 +33,5 @@
 @import "_ada";
 @import "_misc";
 @import '_modal';
+@import '_share';
 /* >^!^< */
