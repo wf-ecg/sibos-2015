@@ -1,8 +1,6 @@
-/*! SocialCount - v0.1.10 - 2015-01-29
-* https://github.com/filamentgroup/SocialCount
-* Copyright (c) 2015 zachleat; Licensed MIT */
+/* _ada.scss */
 
-.socialcount {
+.shares {
     font-size: .875em;
     line-height: 2.2em;
     list-style: none;
@@ -10,11 +8,11 @@
     overflow: hidden;
     padding-left: 0;
 }
-.socialcount :link,
-.socialcount :visited {
+.shares :link,
+.shares :visited {
     color: inherit;
 }
-.socialcount > li {
+.shares > li {
     display: inline-block;
     margin: 3px;
     min-height: 30px;
@@ -25,12 +23,12 @@
     white-space: nowrap;
     zoom: 1;
 }
-.socialcount > li > a {
+.shares > li > a {
     color: inherit;
     display: block;
     text-decoration: none;
 }
-.socialcount .button {
+.shares .button {
     display: none;
     left: 0;
     line-height: 100%;
