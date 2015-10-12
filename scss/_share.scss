@@ -1,11 +1,12 @@
-/* _ada.scss */
+/* _share.scss */
+
+$EM: 18px;
 
 .shares {
-    font-size: .875em;
-    line-height: 2.2em;
+    font-size: $EM;
+    line-height: 1.5;
     list-style: none;
     margin: 0;
-    overflow: hidden;
     padding-left: 0;
 }
 .shares :link,
@@ -13,13 +14,11 @@
     color: inherit;
 }
 .shares > li {
+    background-color: gray;
+    border-radius: 0.25em;
     display: inline-block;
-    margin: 3px;
-    min-height: 30px;
-    min-width: 20px;
     position: relative;
     text-align: center;
-    vertical-align: top;
     white-space: nowrap;
     zoom: 1;
 }
@@ -27,20 +26,9 @@
     color: inherit;
     display: block;
     text-decoration: none;
-}
-.shares .button {
-    display: none;
-    left: 0;
-    line-height: 100%;
-    pointer-events: none;
-    position: absolute;
-    text-align: center;
-    top: 5px;
-    width: 100%;
+    width: 2em;
 }
 .social-icon {
-    display: inline-block;
-    vertical-align: middle;
     zoom: 1;
 }
 .icon-sprite,
@@ -49,35 +37,15 @@
 .icon-pinterest,
 .icon-share,
 .icon-twitter {
-    -moz-background-size: auto 17px;
-    -o-background-size: auto 17px;
-    -webkit-background-size: auto 17px;
-    background-image: url(../images/buttons/share-icons.png);
-    background-repeat: no-repeat;
-    background-size: auto 17px;
+    &::after {
+        font-size: $EM;
+        color: white;
+        font-family: FontAwesome;
+        position: relative;
+    }
 }
-.icon-facebook {
-    background-position: 3px 0;
-    height: 15px;
-    width: 20px;
-}
-.icon-googleplus {
-    background-position: -19px -1px;
-    height: 15px;
-    width: 20px;
-}
-.icon-pinterest {
-    background-position: -45px 0;
-    height: 15px;
-    width: 20px;
-}
-.icon-share {
-    background-position: -57px 0;
-    height: 16px;
-    width: 20px;
-}
-.icon-twitter {
-    background-position: -80px 0;
-    height: 15px;
-    width: 20px;
-}
+.icon-facebook::after { content: '\f164'; }
+.icon-googleplus::after { content: '\f0d5'; top: 1px; }
+.icon-pinterest::after { content: '\f231'; }
+.icon-share::after { content: '\f045'; top: 2px; }
+.icon-twitter::after { content: '\f099'; }

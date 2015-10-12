@@ -90,38 +90,33 @@ a.external {
 }
 
 #stickyBar {
-    @include transition( all .3s );
-    bottom: 45%;
-    left: 0;
-    margin-left: -12px;
-    padding: 0.5em;
-    position: fixed;
-    z-index: 4;
-
-    &:hover {
-        margin-left: -0.6em;
-    }
-    td {
-        background-color: rgba(99,99,99,0.9);
-        border-radius: 0 3px 3px 0;
-        box-shadow: 0 0 0.125em black;
-        height: 3em;
-        position: relative;
-        text-align: center;
-        vertical-align: middle;
-        width: 2em;
-        &:hover {
-            box-shadow: 0 0 0.25em black;
-            width: 3em;
-            z-index: 1;
-        }
-    }
     ul.shares {
+        @include transition( all .3s );
+        bottom: 45%;
+        left: 0;
+        line-height: 1.5em;
+        margin-left: -1em;
+        position: fixed;
+        width: 3em;
+        z-index: 4;
+        &:hover {
+            margin-left: -0.5em;
+        }
+        li {
+            //background-color: rgba(99,99,99,0.9);
+            border-radius: 0 3px 3px 0;
+            box-shadow: 0 0 0.125em black;
+            margin: 0;
+            padding: 0.25em 0 0.25em 0.5em;
+            &:hover {
+                padding-right: 0.125em;
+                z-index: 1;
+            }
+        }
         a {
-            border-radius: 3px;
+            border-radius: 5px;
             &:hover {
                 background-color: #777777;
-                width: 2.5em;
             }
         }
     }
