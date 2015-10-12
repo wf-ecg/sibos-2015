@@ -38,14 +38,13 @@ $EM: 18px;
 .icon-share,
 .icon-twitter {
     &::after {
-        font-size: $EM;
         color: white;
         font-family: FontAwesome;
         position: relative;
     }
 }
 .icon-facebook::after { content: '\f164'; }
-.icon-googleplus::after { content: '\f0d5'; top: 1px; }
+.icon-googleplus::after { content: '\f0d5'; }
 .icon-pinterest::after { content: '\f231'; }
-.icon-share::after { content: '\f045'; top: 2px; }
+.icon-share::after { content: '\f045'; }
 .icon-twitter::after { content: '\f099'; }
