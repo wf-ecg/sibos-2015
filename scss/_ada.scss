@@ -1,6 +1,6 @@
 /* _ada.scss */
 
-.ada, %hidden, .hidden {
+.ada {
     display: initial!important;
     height: 1px;
     left: -5000px;
@@ -11,7 +11,8 @@
     width: 1px;
 }
 ::selection, .selection {
-    text-shadow: 1px 2px 3px gray;
+    background-color: yellow;
+    @include text-shadow(1px 2px 3px gray);
 }
 .keyboard {
     :focus, .focus {
@@ -23,15 +24,9 @@
         outline: none;
     }
 }
-
-.hidden {
-    @extend %hidden;
-}
-i.fa-external-link::after {
-    @extend %hidden;
+.external::after {
     content: 'External link';
 }
-
 .social-icon {
     color: transparent;
     font-size: 1px;
