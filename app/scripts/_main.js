@@ -34,39 +34,7 @@ define(['jquery', 'banner', 'extract', 'mobile', 'modal', 'popup', 'jsmobi', 'js
             });
         },
     };
-    /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-    function dfInit() {
-        var raw, pageHash;
-
-        raw = W.location.pathname.split('/').pop().match(/\w+/g);
-        pageHash = {
-            about: ["About Wells Fargo", 'Learn about the #WellsFargo Global Financial Institutions business'],
-            booth: ["Visit Our Booth", 'See pics of the #WellsFargo booth & learn about events being hosted'],
-            events: ["Sibos Events", 'Learn more about the #WellsFargo events at #Sibos'],
-            explore: ["Explore Singapore", 'See what Singapore has to offer at #Sibos 2015'],
-            giving: ["Charitable Giving", 'Learn more about the #WellsFargo charity programs at #Sibos'],
-            home: ["Home", 'Check out the #WellsFargo Global Financial Institutions Sibos microsite'],
-            mini: ["Sibos", 'Check out the #WellsFargo Global Financial Institutions Sibos microsite'],
-            speakers: ["Sibos Speakers", 'Learn about the #WellsFargo Global Financial Institutions publications'],
-            test: ["x", 'x'],
-        };
-        try {
-            cfArr = pageHash[raw[0]] || pageHash.mini;
-            ShareStrings = {
-                url: 'http://wellsfargomedia.com/sibos/', /// show home only
-                img: 'http://wellsfargomedia.com/sibos/images/header/wf.png',
-                tab: 'Wells Fargo at Sibos 2015 – ' + cfArr[0],
-                sum: cfArr[1],
-            };
-            $('#head1, #head3').attr('content', ShareStrings.tab);
-            $('#head2, #head4').attr('content', ShareStrings.sum);
-            $('#head5').attr('content', ShareStrings.url);
-            $('#head0').text(ShareStrings.tab);
-        } catch (e) {
-            C.error(e);
-        }
-    }
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// HANDLERS
 
@@ -77,8 +45,12 @@ define(['jquery', 'banner', 'extract', 'mobile', 'modal', 'popup', 'jsmobi', 'js
         var triggers = $('#stickyBar .shares a'); // intercept these
 
         Modal.bind(triggers, dialog, function (evt) {
+            var ele = evt.delegateTarget;
             dialog.find('.utilitybtn') // find the go button
-                .attr('href', evt.delegateTarget.href); // transfer url
+                .attr({// transfer linkyness
+                    href: ele.href,
+                    target: ele.target,
+                });
         });
     }
 
@@ -103,23 +75,6 @@ define(['jquery', 'banner', 'extract', 'mobile', 'modal', 'popup', 'jsmobi', 'js
     function _activeNav() {
         var page = (' ' + W.location.pathname).split('/').pop();
         $('a[href="./' + page + '"]').first().addClass('active');
-    }
-
-    function _addMetas() {
-        var i, metas = [
-            '<meta id="head1" name="title"              content="">',
-            '<meta id="head2" name="description"        content="">',
-            '<meta id="head3" property="og:title"       content="">',
-            '<meta id="head4" property="og:description" content="">',
-            '<meta id="head5" property="og:url"         content="">',
-            '<meta id="head6" property="og:image"       content="http://www.wellsfargomedia.com/lib/images/wflogo.svg">',
-            '<meta id="head7" property="og:site_name"   content="www.wellsfargomedia.com">',
-            '<meta id="head8" property="og:type"        content="microsite">'
-        ];
-
-        for (i = 1; i < metas.length; i++) {
-            $(metas[i]).insertAfter('#head0');
-        }
     }
 
     function startRotator(i, e) {
@@ -167,7 +122,6 @@ define(['jquery', 'banner', 'extract', 'mobile', 'modal', 'popup', 'jsmobi', 'js
     function _binder() {
         _device();
         _activeNav();
-        _addMetas();
         _bindModal();
 
         $('p.rotator').each(startRotator);
@@ -199,7 +153,6 @@ define(['jquery', 'banner', 'extract', 'mobile', 'modal', 'popup', 'jsmobi', 'js
         }
         Df.inits();
 
-        dfInit();
         fixExternal();
         watchInputDevice();
         Extract.init();
