@@ -4,20 +4,6 @@
 #Mobile {
     display: none;
 }
-#Desktop {
-    background-color: #fff;
-    border: 1px solid $light;
-    box-shadow: 0 0 33px rgba(0,0,0,0.1);
-    margin: 6px auto;
-    position: relative;
-    width: 956px;
-}
-#Desktop .content {
-    margin-left: 28px;
-    overflow: visible;
-    position: relative;
-    width: 898px;
-}
 #Share {
     display: none;
     float: right;
@@ -69,6 +55,19 @@ body {
 DESKTOP / Layout
 */
 #Desktop {
+    background-color: #fff;
+    border: 1px solid $light;
+    box-shadow: 0 0 33px rgba(0,0,0,0.1);
+    margin: 6px auto;
+    position: relative;
+    width: 956px;
+
+    .content {
+        margin-left: 28px;
+        overflow: visible;
+        position: relative;
+        width: 898px;
+    }
     & > header {
         margin-bottom: 1px;
         padding: 28px;
@@ -76,12 +75,11 @@ DESKTOP / Layout
 
         .mast {
             height: 80px;
-            h1 {
-                float: left;
+            h1 *{
+                vertical-align: bottom;
             }
             .logo {
                 margin-right: 1em;
-                vertical-align: bottom;
             }
             .stage {
                 float: right;
@@ -100,10 +98,7 @@ DESKTOP / Layout
                 -webkit-font-smoothing: subpixel-antialiased;
                 color: $lightest;
                 border-right: 1px solid $light;
-                display: block;
-                float: left;
-                line-height: 1.4;
-                margin: 0;
+                display: inline-block;
                 opacity: 0.7;
                 padding: 5px 12px;
                 text-decoration: none;

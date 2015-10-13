@@ -2,6 +2,33 @@
 /* PROJ */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 $minim: 15px;
+//color
+$light: #cccccc;    $lighter: #dddddd;  $lightest: #eeeeee;
+$blue0: #336699;    $blue1: #779fdf;    $blue2: #6b83b2;
+$gray1: #999999;    $gray2: #777777;
+$gold0: $wf_yellow;
+$red:   $wf_red;    $red0: #9e172d;     $red1:  #c21737;    $red2: #8c081d;
+$whitey:#f5f5f4;
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+//color
+$bar1:     #D4002F; $bar2: #83001C;
+$navback1: #9f958d; $navback2: #837970;
+$navfore1: #44464a; $navfore2: #44464a;
+$prime1:   $red0;   $prime2: white;
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+//shade
+
+$shad0:  rgba(  0,   0,   0, 0.333);
+$shad1:  rgba(123, 123, 123, 0.123);
+$shad2:  rgba( 23,  23,  23, 0.234);
+$hilite: rgba(255, 255,  99, 0.300);
+$dilite: rgba(255,  99, 255, 0.300);
+// - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - - + - //
+// misc
+$rem: 1rem; $hem: 0.5rem; $qem: 0.25rem;
+$link: $blue0;
+$remx: 12px;
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
 
 @import "_base";
 @import "_dev";
