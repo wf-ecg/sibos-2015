@@ -110,10 +110,10 @@ a.external {
             }
         }
         &:hover {
-            margin-left: -0.75em;
+            margin-left: -0.5em;
         }
         li {
-            background-color: #44464a;
+            background-color: #666;
             border-radius: 0 0.2em 0.2em 0;
             box-shadow: 0 0 0.125em black;
             margin: 0;
@@ -126,7 +126,7 @@ a.external {
         }
         a {
             border-radius: 0.2em;
-            padding: 0.2em 0em 0.2em 0.5em;
+            padding: 0.2em 0em 0.2em 0.3em;
 
             &:hover, &:focus {
                 background-color: #888;
