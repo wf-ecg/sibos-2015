@@ -85,7 +85,7 @@ define(['jquery'], function ($) {
                     return; // allow for spacebar open
                 }
                 if (fixer) {
-                    fixer(evt);
+                    fixer(data);
                 }
                 self.show(data.target);
             }).data(Nom, data);
@@ -93,7 +93,7 @@ define(['jquery'], function ($) {
         show: function (ele) {
             /// activate container, hide all kids, then feature one
             El.modal.addClass('active').find('> div').hide();
-            if (ele.length) {
+            if (ele && ele.length) {
                 ele.fadeIn(function () {
                     ele.find('a, button') //
                         .attr('tabindex', '0') //
