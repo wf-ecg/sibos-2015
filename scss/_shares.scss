@@ -1,6 +1,12 @@
 /* _share.scss */
 
 $EM: 18px;
+$QB: cubic-bezier(0.5, 0, 0.5, 1);
+$Face: #3a5795;
+$Goog: #d73d32;
+$Gen:  #fcd65c;
+$Twit: #55acee;
+$Pin:  #cb2027;
 
 .shares {
     font-size: $EM;
@@ -8,43 +14,103 @@ $EM: 18px;
     list-style: none;
     margin: 0;
     padding-left: 0;
-}
-.shares :link,
-.shares :visited {
-    color: inherit;
-}
-.shares > li {
-    background-color: gray;
-    border-radius: 0.25em;
-    display: inline-block;
-    position: relative;
-    text-align: center;
-    white-space: nowrap;
-    zoom: 1;
-}
-.shares > li > a {
-    color: inherit;
-    display: block;
-    text-decoration: none;
-    width: 2em;
-}
-.social-icon {
-    zoom: 1;
-}
-.icon-sprite,
-.icon-facebook,
-.icon-googleplus,
-.icon-pinterest,
-.icon-share,
-.icon-twitter {
-    &::after {
-        color: white;
-        font-family: FontAwesome;
+
+    & :link, & :visited {
+        color: inherit;
+    }
+    & > li {
+        background-color: gray;
+        display: inline-block;
         position: relative;
+        text-align: center;
+        white-space: nowrap;
+        zoom: 1;
+    }
+    & > li > a {
+        color: inherit;
+        display: block;
+        text-decoration: none;
+        width: 2em;
+
+        &:hover, &:focus {
+            background-color: #999;
+            outline: none;
+            &.icon-facebook { background-color: transparentize( $Face, 0.5 ); }
+            &.icon-googleplus { background-color: transparentize( $Goog, 0.5 ); }
+            &.icon-share { background-color: transparentize( $Gen, 0.5 ); }
+            &.icon-twitter { background-color: transparentize( $Twit, 0.5 ); }
+            &.icon-pinterest { background-color: transparentize( $Pin, 0.5 ); }
+        }
+    }
+    .icon-facebook,
+    .icon-googleplus,
+    .icon-pinterest,
+    .icon-share,
+    .icon-twitter {
+        &::after {
+            color: white;
+            font-family: FontAwesome;
+            position: relative;
+        }
+    }
+    .icon-facebook::after { content: '\f09a'; }
+    .icon-googleplus::after { content: '\f0d5'; }
+    .icon-share::after { content: '\f003'; }
+    .icon-twitter::after { content: '\f099'; }
+    .icon-pinterest::after { content: '\f231'; }
+}
+
+.shares.slide {
+    @include transition( all 0.2s );
+    left: 0;
+    line-height: 1.5em;
+    margin-left: -1em;
+    padding: 2em 4em 2em 0; // activation ring // border: 1px solid red;
+    position: fixed;
+    top: 40%;
+    width: 3em;
+    z-index: 1;
+
+    * {
+        @include transition( all 0.1s $QB );
+        &:hover, &:focus {
+            font-size: 1.2em;
+        }
+    }
+    &:hover {
+        margin-left: -0.5em;
+    }
+    li {
+        border-radius: 0 0.2em 0.2em 0;
+        box-shadow: 0 0 0.125em black;
+        margin: 0;
+        padding: 0.25em 0.5em;
+        padding-right: 0.125em;
+        z-index: 2;
+
+        &:hover {
+            z-index: 3;
+        }
+    }
+    a {
+        border-radius: 0.25em;
+        padding: 0.2em 0em 0.2em 0.3em;
+        text-shadow: -1px 1px 1px #666;
     }
 }
-.icon-facebook::after { content: '\f09a'; }
-.icon-googleplus::after { content: '\f0d5'; }
-.icon-pinterest::after { content: '\f231'; }
-.icon-share::after { content: '\f003'; }
-.icon-twitter::after { content: '\f099'; }
+.shares.dark {
+    li {
+        background-color: rgba(25, 25, 25, 0.75);
+    }
+    a {
+        &:hover, &:focus {
+            background-color: #999;
+            outline: none;
+            &.icon-facebook { background-color: transparentize( $Face, 0.2 ); }
+            &.icon-googleplus { background-color: transparentize( $Goog, 0.2 ); }
+            &.icon-share { background-color: transparentize( $Gen, 0.2 ); }
+            &.icon-twitter { background-color: transparentize( $Twit, 0.2 ); }
+            &.icon-pinterest { background-color: transparentize( $Pin, 0.2 ); }
+        }
+    }
+}
