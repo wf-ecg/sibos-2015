@@ -44,12 +44,11 @@ define(['jquery', 'banner', 'extract', 'mobile', 'modal', 'popup', 'jsmobi', 'js
         var dialog = $('.modal .dialog'); // thing to show
         var triggers = $('#stickyBar .shares a'); // intercept these
 
-        Modal.bind(triggers, dialog, function (evt) {
-            var ele = evt.delegateTarget;
+        Modal.bind(triggers, dialog, function (data) {
             dialog.find('.utilitybtn') // find the go button
                 .attr({// transfer linkyness
-                    href: ele.href,
-                    target: ele.target,
+                    href: data.source[0].href,
+                    target: data.source[0].target,
                 });
         });
     }
