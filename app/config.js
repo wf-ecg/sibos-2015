@@ -26,6 +26,8 @@ require.config({
         jsmobi: 'libs/js-mobi',
         jsview: 'libs/js-view',
         jqxtn: 'libs/jq-xtn',
+        //
+        galleria: '../vendor/galleria/galleria-1.2.9',
     },
 //    shim: {
 //        main: {
