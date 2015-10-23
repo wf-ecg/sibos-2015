@@ -1,5 +1,5 @@
 /*jslint white:false */
-/*global _, ShareStrings:true */
+/*global _, ShareStrings:true, Galleria */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  recreated drt 2015-10
 
@@ -118,6 +118,13 @@ define(['jquery', 'banner', 'extract', 'mobile', 'modal', 'popup', 'jsmobi', 'js
         });
     }
 
+    function loadGallery() {
+        require(['galleria'], function () {
+            Galleria.loadTheme('./vendor/galleria/galleria.classic.min.js');
+            Galleria.run('#galleria');
+        });
+    }
+
     function _binder() {
         _device();
         _activeNav();
@@ -170,6 +177,10 @@ define(['jquery', 'banner', 'extract', 'mobile', 'modal', 'popup', 'jsmobi', 'js
         }
 
         Popup.init(self);
+
+        if (_whatPage() === 'photos.html') {
+            loadGallery();
+        }
     }
 
     $.extend(self, {
@@ -185,6 +196,8 @@ define(['jquery', 'banner', 'extract', 'mobile', 'modal', 'popup', 'jsmobi', 'js
             C.debug.apply(C, [name, 'callback'].concat(arguments));
         },
     });
+
+    W.main = self;
 
     return self;
 });
